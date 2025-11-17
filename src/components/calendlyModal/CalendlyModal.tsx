@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { X, Calendar, CheckCircle } from "lucide-react";
 import { InlineWidget, useCalendlyEventListener } from "react-calendly";
