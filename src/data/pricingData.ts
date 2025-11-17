@@ -1,0 +1,125 @@
+export interface PricingPlan {
+  title: string;
+  tag?: string;
+  subTitle: string;
+  description: string;
+  price: string;
+  oldPrice?: string;
+  features: string[];
+  addOn?: boolean;
+  highlight?: boolean;
+  paymentLink?: string;
+}
+
+export const usPricingPlans: PricingPlan[] = [
+  {
+    title: "IGNITE",
+    subTitle: "250 Applications",
+    description: "Perfect for entry-level professionals",
+    price: "$199",
+    oldPrice: "$299",
+    features: [
+      "No Time Constraint",
+      "AI-powered job matching",
+      "Resume Optimization",
+      "Basic Analytical Dashboard",
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: "https://www.paypal.com/ncp/payment/F6CESAWAYUYU2",
+  },
+  {
+    title: "PROFESSIONAL",
+    tag: "ECONOMICAL",
+    subTitle: "500 Applications",
+    description: "Most popular for mid-level professionals",
+    price: "$349",
+    oldPrice: "$449",
+    features: [
+      "Everything in Ignite",
+      "Priority job matching",
+      "Advance analytics & insights",
+      "LinkedIn profile optimization",
+      "Interview preparation tips",
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: "https://www.paypal.com/ncp/payment/SMTK5UYQYM4A8",
+  },
+  {
+    title: "EXECUTIVE",
+    tag: "MOST POPULAR",
+    subTitle: "1200 Applications",
+    description: "For senior professionals & executive",
+    price: "$599",
+    oldPrice: "$699",
+    features: [
+      "Everything in Professional",
+      "Executive-level job targeting",
+      "Portfolio development",
+      "Cover Letters",
+      "Network introduction requests",
+      "Emailing Recruiters",
+    ],
+    addOn: true,
+    highlight: true,
+    paymentLink: "https://www.paypal.com/ncp/payment/CDRFGB6M566X8",
+  },
+];
+
+export const canadaPricingPlans: PricingPlan[] = [
+  {
+    title: "IGNITE",
+    subTitle: "250 Applications",
+    description: "Perfect for entry-level professionals",
+    price: "CA$279",
+    oldPrice: "CA$389",
+    features: [
+      "No Time Constraint",
+      "AI-powered job matching",
+      "Resume Optimization",
+      "Basic Analytical Dashboard",
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: "https://www.paypal.com/ncp/payment/XE595XT8FUR3W",
+  },
+  {
+    title: "PROFESSIONAL",
+    tag: "ECONOMICAL",
+    subTitle: "500 Applications",
+    description: "Most popular for mid-level professionals",
+    price: "CA$489",
+    oldPrice: "CA$619",
+    features: [
+      "Everything in Ignite",
+      "Priority job matching",
+      "Advance analytics & insights",
+      "LinkedIn profile optimization",
+      "Interview preparation tips",
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: "https://www.paypal.com/ncp/payment/XHDEFS696TUSW",
+  },
+  {
+    title: "EXECUTIVE",
+    tag: "MOST POPULAR",
+    subTitle: "1200 Applications",
+    description: "For senior professionals & executive",
+    price: "CA$839",
+    oldPrice: "CA$949",
+    features: [
+      "Everything in Professional",
+      "Executive-level job targeting",
+      "Portfolio development",
+      "Cover Letters",
+      "Network introduction requests",
+      "Emailing Recruiters",
+    ],
+    addOn: true,
+    highlight: true,
+    paymentLink: "https://www.paypal.com/ncp/payment/BDTDTA7CRXXWQ",
+  },
+];
+

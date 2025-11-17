@@ -1,0 +1,266 @@
+/* === Navbar Container === */
+.navContainer {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(120px);
+  -webkit-backdrop-filter: blur(120px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(241, 241, 241, 0.2);
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* === Inner Wrapper === */
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 95%;
+}
+
+/* === Left: Logo === */
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navLogoText {
+  font-weight: 800;
+  font-size: 2rem;
+  color: #000;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+}
+
+/* === Center: Links (Desktop) === */
+.navLinks {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLinkItem {
+  display: flex;
+  align-items: center;
+}
+
+.navLinkText {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLinkText:hover {
+  color: #ff4c00;
+}
+
+/* === Right: CTAs (Desktop) === */
+.navRight {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.navSecondaryButton,
+.navPrimaryButton {
+  border-radius: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  box-shadow: 0 0.3rem 0 #ff4c00;
+}
+
+/* Secondary Button */
+.navSecondaryButton {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #dcdcdc;
+}
+
+.navSecondaryButton:hover {
+  background-color: #f9f9f9;
+}
+
+/* Primary Button */
+.navPrimaryButton {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+
+.navPrimaryButton:hover {
+  background-color: #222;
+}
+
+/* === Mobile Menu Icon === */
+.navMenuIcon {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 60;
+}
+
+.iconHamburger,
+.iconClose {
+  width: 1.5rem;
+  height: 0.15rem;
+  background-color: #000;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.iconHamburger::before,
+.iconHamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1.5rem;
+  height: 0.15rem;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.iconHamburger::before {
+  top: -0.4rem;
+}
+
+.iconHamburger::after {
+  top: 0.4rem;
+}
+
+.iconClose {
+  transform: rotate(45deg);
+}
+
+.iconClose::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1.5rem;
+  height: 0.15rem;
+  background-color: #000;
+  transform: rotate(-90deg);
+}
+
+/* === Mobile Dropdown Menu === */
+.navMobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(120px);
+  -webkit-backdrop-filter: blur(120px);
+  border-top: 1px solid rgba(238, 238, 238, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.05);
+  z-index: 55;
+  animation: fadeSlideDown 0.3s ease forwards;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navMobileLinks {
+  list-style: none;
+  padding: 0.2rem 0.3rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.navMobileLink {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navMobileLink:hover {
+  color: #ff4c00;
+}
+
+.navMobileButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+.navMobileSecondary,
+.navMobilePrimary {
+  text-align: center;
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.navMobileSecondary {
+  border: 1px solid #000;
+  color: #000;
+}
+
+.navMobilePrimary {
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 0.2rem 0 #ff4c00;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 900px) {
+  .navInner {
+    padding: 1rem 1.5rem;
+  }
+
+  .navLogoText {
+    font-size: 1.4rem;
+  }
+
+  .navLinks,
+  .navRight {
+    display: none;
+  }
+
+  .navMenuIcon {
+    display: block;
+  }
+
+  .navMobileLinks {
+    text-align: left;
+  }
+}

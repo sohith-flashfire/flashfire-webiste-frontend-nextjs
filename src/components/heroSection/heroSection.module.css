@@ -1,0 +1,333 @@
+/* === Hero Container === */
+.heroContainer {
+  background-color: #f9e8e0;
+  text-align: center;
+  padding: 3rem 2rem 4rem;
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+}
+
+/* === Top Badges === */
+.heroBadges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.heroBadgeItem {
+  border: 1px solid #000;
+  color: #ff4c00;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.1rem;
+  letter-spacing: 0.05em;
+}
+
+/* === Headline === */
+.heroHeadline {
+  font-size: 3.5rem;
+  line-height: 0.5;
+  font-weight: 700;
+  color: #000;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: keep-all;
+  padding: 0 1rem;
+  gap: 0;
+  row-gap: 0;
+}
+
+.heroHeadlineText {
+  display: block;
+  white-space: nowrap;
+  line-height: 0.5;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  margin-top: -0.1em;
+  margin-bottom: -0.1em;
+}
+
+.heroHeadlineText:first-child {
+  margin-bottom: 0;
+}
+
+.heroHighlight {
+  color: #000;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  display: inline-block;
+}
+
+.heroLogo {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 -0.4em;
+  height: 2.3em;
+  width: auto;
+  line-height: 1;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* === Description === */
+.heroDescription {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* === CTA Button === */
+.heroCTAButton {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 0 #ff4c00;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.heroCTAButton:hover {
+  background-color: #222;
+  transform: translateY(-2px);
+}
+
+/* === Trusted by 260+ Users === */
+.heroUserTrust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 3rem;
+}
+
+.heroUserIcons {
+  display: flex;
+  align-items: center;
+}
+
+.heroUserCircleWrapper {
+  position: relative;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  overflow: hidden;
+  margin-left: -0.9rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.heroUserCircleWrapper:first-child {
+  margin-left: 0;
+}
+
+.heroUserCircle {
+  object-fit: cover;
+}
+
+.heroUserText {
+  font-size: 1rem;
+  color: #000;
+  font-weight: 500;
+}
+
+/* === Universities Section === */
+.heroUniversityContainer {
+  width: 70%;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Heading in separate box */
+.heroUniversityHeadingBox {
+  background: #fff;
+  border-radius: 0;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.heroUniversityHeading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #555;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.heroUniversityWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  padding: 0.5rem 0;
+  border-radius: 0;
+  width: 90%;
+  max-width: 90%;
+  margin: 0 auto;
+  /* box-shadow: 0 0 6px rgba(0, 0, 0, 0.05); */
+}
+
+.heroUniversityWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.heroUniversityWrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.heroUniversityStrip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  min-width: fit-content;
+}
+
+
+.heroUniversityStripUniName {
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.heroUniversityCard {
+  flex: 0 0 auto;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+  min-width: 160px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.universityLogo {
+  object-fit: contain;
+  width: auto;
+  max-width: 50px;
+  height: 2rem;
+  max-height: 2rem;
+  flex-shrink: 0;
+}
+
+
+/* === Responsive === */
+@media (max-width: 1200px) {
+  .heroHeadline {
+    font-size: 3rem;
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 968px) {
+  .heroHeadline {
+    font-size: 2.5rem;
+    max-width: 700px;
+  }
+  
+  .heroHeadlineText {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBadges {
+    flex-direction: row;
+  }
+
+  .heroBadgeItem {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .heroHeadline {
+    font-size: 2rem;
+    font-weight: bold;
+    max-width: 100%;
+    width: 100%;
+    color: #000;
+  }
+
+  .heroHeadlineText {
+    white-space: normal;
+    display: block;
+  }
+
+  .heroLogo {
+    height: 2em;
+    margin: 0 -0.3em;
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .heroCTAButton {
+    padding: 0.8rem 1.4rem;
+  }
+
+  .heroUniversityWrapper {
+    max-width: 95%;
+  }
+
+  .heroUniversityContainer {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .universityLogo {
+    height: 2rem;
+  }
+}
