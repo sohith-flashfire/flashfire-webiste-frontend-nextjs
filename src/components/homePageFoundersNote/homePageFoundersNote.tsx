@@ -25,7 +25,7 @@ export default function HomePageFoundersNote() {
             people for who they are.
           </p>
 
-          <blockquote className="text-[1.4rem] font-semibold italic text-black border-l-4 border-[#ff4c00] pl-4 my-8 leading-[1.6]">
+          <blockquote className="text-[1.4rem] font-normal italic text-black border-l-4 border-[#ff4c00] pl-4 my-8 leading-[1.6]">
             The problem was never the people. It was the process.
           </blockquote>
 
@@ -56,11 +56,11 @@ export default function HomePageFoundersNote() {
           <div className="relative w-full max-w-[330px] -mt-10 max-[1024px]:mt-0 max-[1024px]:max-w-[280px]">
             <div className="border-[5px] border-white outline outline-2 outline-[#ff4c00] overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.1)] w-full">
               <Image
-                src="/images/adit-jain.png"
+                src="/images/Adit.jpg"
                 alt="Adit Jain"
                 width={280}
                 height={400}
-                className="w-full h-[26rem] object-cover object-[center_20%] transition-transform duration-300 hover:scale-[1.03] max-[1024px]:h-[22rem] max-[768px]:h-[18rem]"
+                className="w-full h-[26rem] object-cover object-center transition-transform duration-300 hover:scale-[1.03] max-[1024px]:h-[22rem] max-[768px]:h-[18rem]"
               />
 
               <div className="absolute bottom-2 left-2 right-2 bg-black/90 text-white flex items-center justify-between px-4 py-3 backdrop-blur-[3px] text-left border border-white rounded-lg">

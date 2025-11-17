@@ -9,7 +9,7 @@
 
 .offerHeading {
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 3rem;
   line-height: 1.2;
 }
@@ -26,7 +26,7 @@
   flex-wrap: nowrap;
   white-space: nowrap;
   width: fit-content;
-  animation: scroll 30s linear infinite;
+  animation: scroll 60s linear infinite;
   will-change: transform;
 }
 
@@ -181,7 +181,7 @@
 
   .offerMarquee {
     gap: 1rem;
-    animation-duration: 30s; /* slightly slower for small screens */
+    animation-duration: 60s; /* slower for small screens */
   }
 
   .offerCard {

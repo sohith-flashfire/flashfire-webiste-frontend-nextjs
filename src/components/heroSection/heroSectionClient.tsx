@@ -31,7 +31,7 @@ export default function HeroSectionClient({ data }: Props) {
         <span className={styles.heroHeadlineText}>
           <span className={styles.heroHighlight}>{data.headlineHighlight}</span>
           <Image
-            src="/images/Flashfire no bg.png"
+            src="/images/flashfire-logo.png"
             alt="Flashfire Logo"
             width={60}
             height={60}

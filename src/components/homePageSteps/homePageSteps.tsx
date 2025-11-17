@@ -11,11 +11,12 @@ export default function HomePageSteps() {
       {/* === Header === */}
       <div className="w-[90%] mx-auto mb-16">
         <h2 className="w-[65%] mx-auto mb-4 text-[2.8rem] font-bold text-[#111] leading-[1.3] max-[1024px]:w-[80%] max-[1024px]:text-[2.2rem] max-[768px]:w-full max-[768px]:text-[1.8rem] max-[480px]:text-[1.6rem]">
-          From searching to interviewing, just 4 simple steps.
+          From searching to interviewing,<br />
+          just 4 simple steps.
         </h2>
         <p className="w-[60%] mx-auto text-[1.15rem] text-[#444] leading-[1.6] max-[1024px]:w-[75%] max-[1024px]:text-[1rem] max-[768px]:w-[95%] max-[768px]:text-[1rem] max-[480px]:text-[0.9rem]">
-          We turn your endless job hunt into a smooth, automated path to
-          interview calls.{" "}
+          We turn your endless job hunt into a smooth, automated path to interview<br />
+          calls.{" "}
           <span className="text-[#ff4c00] font-medium">
             You set the goal, Flashfire takes care of the journey.
           </span>

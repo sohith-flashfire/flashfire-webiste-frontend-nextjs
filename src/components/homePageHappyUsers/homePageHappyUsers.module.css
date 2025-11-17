@@ -109,7 +109,8 @@
 /* Each Card */
 .videoCard {
   position: relative;
-  width: 20rem;
+  width: 38rem;
+  min-width: 38rem;
   height: 32rem;
   aspect-ratio: 9 / 16;
   border-radius: 0;

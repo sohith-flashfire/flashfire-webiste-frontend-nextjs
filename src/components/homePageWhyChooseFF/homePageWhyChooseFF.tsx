@@ -25,13 +25,14 @@ export default function HomePageWhyChooseFF() {
       <div className="pointer-events-none absolute w-[18rem] h-[18rem] -right-32 top-24 bg-[rgba(245,93,29,1)] blur-[120px] opacity-70"></div>
       {/* === Header === */}
       <header className="w-[55%] mx-auto mb-12 max-[1024px]:w-4/5 max-[768px]:w-full">
-        <h2 className="text-[3.2rem] font-bold text-[#111] mb-4 max-[1024px]:text-[2.4rem] max-[768px]:text-[1.8rem]">
+        <h2 className="text-[50.84px] font-bold text-[#02060A] mb-4 leading-[110%] tracking-[-0.03em] font-['Satoshi',sans-serif] max-[1024px]:text-[2.4rem] max-[768px]:text-[1.8rem]">
           Why Choose Flashfire?
         </h2>
-        <p className="text-[1.25rem] text-black semi-bold leading-[1.6] max-[1024px]:text-[1.05rem] max-[768px]:text-[1rem]">
-          We don’t just apply, we <strong>make you get noticed.</strong>{" "}
+        <p className="text-[20px] font-medium text-[#02060A] leading-[139%] tracking-[-0.03em] font-['Satoshi',sans-serif] max-[1024px]:text-[1.05rem] max-[768px]:text-[1rem]">
+          We don't just apply, we <strong className="font-bold italic">make you get noticed.</strong>{" "}
           Flashfire combines{" "}
-          <span className="text-[#ff4c00] font-semibold">AI precision</span>{" "}
+          <span className="text-[#ff4c00] font-semibold">AI precision</span>
+          <br />
           with{" "}
           <span className="text-[#d64b00] font-semibold">human insight</span> to
           get you interviews that actually convert.
