@@ -25,12 +25,12 @@ export default function HomePageMilestonesClient() {
       domain: "mirus.ai",
       text: "Flashfire completely transformed my job search experience. The AI-powered platform guided me through my entire application process, automatically tailoring my resume for each role and tracking every application. I landed interviews at MiRUs within just 10 days, and the personalized approach made all the difference. The real-time updates kept me informed every step of the way!",
       user: "Kanchan",
-      role: "Software Engineer",
-      image: "/images/happy-users-sc/KANCHAN.png",
+      role: "Scientist, Senior",
+      image: "/images/KANCHAN.png",
     },
     {
-      company: "Google",
-      domain: "google.com",
+      company: "MaineHealth Medical Center",
+      domain: "mainehealth.org/maine-medical-center",
       text: "I was struggling with the overwhelming job application process until I found Flashfire. The resume booster and intelligent job tracker saved me hours daily by automating the tedious parts. The platform's ATS optimization ensured my applications got noticed, and I received a Google offer in just 3 weeks. This tool is absolutely essential for anyone serious about landing their dream job!",
       user: "Uhtiha",
       role: "Software Engineer",
@@ -41,7 +41,7 @@ export default function HomePageMilestonesClient() {
       domain: "skyworksinc.com",
       text: "From complete job search chaos to absolute clarity — Flashfire changed everything for me. The automated application system handled hundreds of applications while I focused on preparing for interviews. I received interview calls from Skyworks Solutions in my first week, and the structured approach made the entire process stress-free. Highly recommend to all job seekers!",
       user: "Anjali",
-      role: "Software Engineer",
+      role: "Business Analyst",
       image: "/images/anjali.jpeg",
     },
     {
@@ -57,7 +57,7 @@ export default function HomePageMilestonesClient() {
       domain: "deloitte.com",
       text: "Flashfire's advanced ATS optimization technology helped me stand out in a competitive consulting market. The platform's resume tailoring and cover letter generation were spot-on, matching each firm's requirements perfectly. I received multiple offers from top consulting firms including Deloitte, and the entire process was seamless. This is the future of job searching!",
       user: "Neha",
-      role: "Business Analyst",
+      role: "Consultant",
       image: "/images/neha.png",
     },
     {
@@ -81,7 +81,7 @@ export default function HomePageMilestonesClient() {
       domain: "armorcode.com",
       text: "Tracking 200+ applications manually was impossible, but Flashfire made it effortless. The platform's dashboard showed me exactly where I stood with each application, and the automated follow-ups ensured I never missed an opportunity. Flashfire helped me land my dream role at Armorcode, and I couldn't have done it without their comprehensive tracking system!",
       user: "Amit",
-      role: "Software Engineer",
+      role: "DevOps Engineer",
       image: "/images/amit.jpg",
     },
     {
@@ -89,7 +89,7 @@ export default function HomePageMilestonesClient() {
       domain: "statestreet.com",
       text: "Flashfire made everything structured and automated, transforming my chaotic job search into a smooth, organized process. The platform's intelligent application system handled all the repetitive work while I focused on what mattered — preparing for interviews. I secured State Street interviews easily, and the entire experience was stress-free and efficient!",
       user: "Rudraksh",
-      role: "Software Engineer",
+      role: "SDE 1 ",
       image: "/images/rudraksh.jpg",
     },
     {
@@ -97,7 +97,7 @@ export default function HomePageMilestonesClient() {
       domain: "microsoft.com",
       text: "From job search chaos to complete clarity — Flashfire revolutionized how I approached my career search. The platform's AI-powered system sent out hundreds of tailored applications automatically, and I received 4 interview calls from top companies in my first week alone. The real-time tracking and optimization features are game-changers. Microsoft here I come!",
       user: "Sai Krishna",
-      role: "Software Engineer",
+      role: "Data Analyst",
       image: "/images/SAI KRISHNA.jpeg",
     },
     {
@@ -105,7 +105,7 @@ export default function HomePageMilestonesClient() {
       domain: "wise.com",
       text: "The AI-powered resume tailoring from Flashfire was absolutely perfect. Each application was customized to match the job requirements, and the platform's intelligent matching ensured I was applying to the right roles. The automated system saved me countless hours while maintaining quality. I received a Wise offer within a month, and I'm thrilled with the results!",
       user: "Rijul Jain",
-      role: "Software Engineer",
+      role: "Business Analyst",
       image: "/images/rijul.jpg",
     },
     {
@@ -113,7 +113,7 @@ export default function HomePageMilestonesClient() {
       domain: "barclays.com",
       text: "Flashfire guided me through my entire application process with precision and efficiency. The platform's comprehensive approach — from resume optimization to automated applications — made everything seamless. The real-time updates and tracking kept me informed throughout. I landed interviews at Barclays within 10 days, and the structured process made all the difference!",
       user: "Aman Guleria",
-      role: "Software Engineer",
+      role: "BA 1",
       image: "/images/aman.jpg",
     },
   ];

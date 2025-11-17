@@ -8,10 +8,11 @@
 }
 
 .offerHeading {
-  font-size: 2.4rem;
+  font-size: 76.26px;
   font-weight: 900;
   margin-bottom: 3rem;
-  line-height: 1.2;
+  line-height: 110%;
+  letter-spacing: -2.29px;
 }
 
 /* === Marquee Wrapper === */
@@ -159,8 +160,9 @@
 /* === Responsive === */
 @media (max-width: 1024px) {
   .offerHeading {
-    font-size: 2rem;
+    font-size: 60px;
     margin-bottom: 2.5rem;
+    letter-spacing: -1.8px;
   }
 
   .offerCard {
@@ -175,8 +177,9 @@
   }
 
   .offerHeading {
-    font-size: 1.8rem;
+    font-size: 48px;
     margin-bottom: 2rem;
+    letter-spacing: -1.44px;
   }
 
   .offerMarquee {
@@ -223,8 +226,9 @@
   }
 
   .offerHeading {
-    font-size: 1.5rem;
+    font-size: 32px;
     margin-bottom: 1.5rem;
+    letter-spacing: -0.96px;
   }
 
   .offerCard {

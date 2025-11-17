@@ -159,7 +159,7 @@ export default function HomePageHappyUsers() {
               <div className="relative w-full h-full rounded-none overflow-hidden">
                 <video
                   id={`userVideo-${index}`}
-                  className="w-full h-full object-cover block rounded-none cursor-pointer"
+                  className={`w-full h-full object-cover block rounded-none cursor-pointer ${playingIndex === index ? 'block' : 'hidden'}`}
                   controls={playingIndex === index}
                   muted
                   loop
@@ -175,14 +175,24 @@ export default function HomePageHappyUsers() {
                   Your browser does not support HTML video.
                 </video>
 
-                {/* Play Button Overlay */}
+                {/* Thumbnail Image Overlay - Show when video is not playing */}
                 {playingIndex !== index && (
-                  <div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px] h-[70px] rounded-full bg-black/60 text-white text-[2rem] font-bold flex justify-center items-center cursor-pointer transition-all duration-250 backdrop-blur-[2px] hover:bg-black/75 hover:scale-105 z-10"
-                    onClick={() => handlePlay(index)}
-                  >
-                    ▶
-                  </div>
+                  <>
+                    <Image
+                      src={video.profileImage}
+                      alt={`${video.name} - Click to play video`}
+                      fill
+                      className="w-full h-full object-cover rounded-none"
+                      onClick={() => handlePlay(index)}
+                    />
+                    {/* Play Button Overlay */}
+                    <div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px] h-[70px] rounded-full bg-black/60 text-white text-[2rem] font-bold flex justify-center items-center cursor-pointer transition-all duration-250 backdrop-blur-[2px] hover:bg-black/75 hover:scale-105 z-10"
+                      onClick={() => handlePlay(index)}
+                    >
+                      ▶
+                    </div>
+                  </>
                 )}
 
                 {/* User Info - Always visible, overlaid on video */}
