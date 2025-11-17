@@ -77,6 +77,7 @@ export default function HomePageMilestonesClient() {
       text: "The personalized cover letters and resume optimization got me noticed. IBM offer secured!",
       user: "Aryan",
       role: "Software Engineer",
+      image: "/images/aryan.jpg",
     },
     {
       company: "Armorcode",
@@ -84,6 +85,7 @@ export default function HomePageMilestonesClient() {
       text: "Tracked 200+ applications effortlessly. Flashfire helped me land my dream role at Armorcode!",
       user: "Amit",
       role: "Software Engineer",
+      image: "/images/amit.jpg",
     },
     {
       company: "State Street",
@@ -91,6 +93,7 @@ export default function HomePageMilestonesClient() {
       text: "Flashfire made everything structured and automated — helped me secure State Street interviews easily!",
       user: "Rudraksh",
       role: "Software Engineer",
+      image: "/images/rudraksh.jpg",
     },
     {
       company: "Microsoft",
@@ -105,6 +108,7 @@ export default function HomePageMilestonesClient() {
       text: "The AI-powered resume tailoring was perfect. Received a Wise offer within a month!",
       user: "Rijul Jain",
       role: "Software Engineer",
+      image: "/images/rijul.jpg",
     },
     {
       company: "Barclays",
@@ -112,6 +116,7 @@ export default function HomePageMilestonesClient() {
       text: "Flashfire guided me through my entire application process — I landed interviews at Barclays within 10 days!",
       user: "Aman Guleria",
       role: "Software Engineer",
+      image: "/images/aman.jpg",
     },
   ];
 
