@@ -32,6 +32,7 @@ export default function HomePageMilestonesClient() {
       text: "Flashfire guided me through my entire application process — I landed interviews at MiRUs within 10 days!",
       user: "Kanchan",
       role: "Software Engineer",
+      image: "/images/happy-users-sc/KANCHAN.png",
     },
     {
       company: "Google",
@@ -47,6 +48,7 @@ export default function HomePageMilestonesClient() {
       text: "From job search chaos to clarity — I received interview calls in my first week using Flashfire!",
       user: "Anjali",
       role: "Software Engineer",
+      image: "/images/anjali.jpeg",
     },
     {
       company: "Akamai Technologies",
@@ -70,6 +72,7 @@ export default function HomePageMilestonesClient() {
       text: "The automated application system was a game-changer. Landed an Amazon offer in just 2 weeks!",
       user: "Teja",
       role: "Software Engineer",
+      image: "/images/TEJA.jpeg",
     },
     {
       company: "IBM",
@@ -101,6 +104,7 @@ export default function HomePageMilestonesClient() {
       text: "From job search chaos to clarity — I received 4 interview calls in my first week using Flashfire!",
       user: "Sai Krishna",
       role: "Software Engineer",
+      image: "/images/SAI KRISHNA.jpeg",
     },
     {
       company: "Wise",
