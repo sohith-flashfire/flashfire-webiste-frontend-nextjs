@@ -5,6 +5,7 @@ import styles from "./homePageFAQ.module.css";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { questionsData } from "@/src/data/questionsData";
 import Image from "next/image";
+import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 
 export default function HomePageFAQClient() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -79,7 +80,12 @@ export default function HomePageFAQClient() {
             interviews faster.
           </p>
 
-          <button className={styles.demoButton}>Book My Demo Call →</button>
+          <button 
+            className={styles.demoButton}
+            onClick={() => window.open(WHATSAPP_SUPPORT_URL, "_blank")}
+          >
+            Book My Demo Call →
+          </button>
 
           <p className={styles.demoNote}>
             Limited slots available. Book your call now!
