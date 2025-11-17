@@ -9,6 +9,7 @@ import HomePageOfferLetters from "@/src/components/homePageOfferLetters/homePage
 import HomePagePricingPlans from "@/src/components/homePagePricingPlans/homePagePricingPlans";
 import HomePagePTNote from "@/src/components/homePagePTNote/homePagePTNote";
 import HomePageResultStats from "@/src/components/homePageResultStats/homePageResultStats";
+import HomePageStatsCards from "@/src/components/homePageStatsCards/homePageStatsCards";
 import HomePageSteps from "@/src/components/homePageSteps/homePageSteps";
 import HomePageVideo from "@/src/components/homePageVideo/homePageVideo";
 import HomePageWhyChooseFF from "@/src/components/homePageWhyChooseFF/homePageWhyChooseFF";
@@ -21,6 +22,7 @@ const Home = () => {
       <HeroSection /> {/* using useState, so client */}
       <HomePageVideo />
       <HomePageResultStats />
+      <HomePageStatsCards />
       <HomePageMilestones /> {/* using useState, so client */}
       <HomePageSteps />
       <HomePageOfferLetters /> {/* using useState, so client */}

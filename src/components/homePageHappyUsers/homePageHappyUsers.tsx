@@ -105,7 +105,18 @@ export default function HomePageHappyUsers() {
     >
       {/* === Top Orange Section === */}
       <div className="bg-[#f55d1d] text-white text-center py-20 px-8 pb-40 relative">
-        <h2 className="text-[3.2rem] font-bold mb-12 max-[600px]:text-[2rem]">
+        <h2 
+          className="mb-12 max-[600px]:text-[2rem]"
+          style={{
+            fontFamily: "Space Grotesk, sans-serif",
+            fontWeight: 700,
+            fontStyle: "normal",
+            fontSize: "76.26px",
+            lineHeight: "110%",
+            letterSpacing: "-2.29px", // -3% of 76.26px
+            textAlign: "center"
+          }}
+        >
           100+ Happy Users&rsquo; Love!
         </h2>
 

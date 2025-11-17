@@ -74,8 +74,9 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
 
   async function SaveDetailsToDB() {
     if (!API_BASE_URL) {
-      console.error("API_BASE_URL is not configured");
-      return false;
+      console.error("API_BASE_URL is not configured - proceeding to Calendly anyway");
+      // Return true to allow Calendly to open even if API is not configured
+      return true;
     }
     
     try {

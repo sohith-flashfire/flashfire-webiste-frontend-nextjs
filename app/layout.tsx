@@ -33,6 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Satoshi Font */}
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@500&display=swap"
+          rel="stylesheet"
+        />
         {/* Calendly CSS */}
         <link
           href="https://assets.calendly.com/assets/external/widget.css"

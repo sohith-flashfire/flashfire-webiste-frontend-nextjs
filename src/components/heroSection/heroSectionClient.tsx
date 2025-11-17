@@ -79,7 +79,7 @@ export default function HeroSectionClient({ data }: Props) {
         {/* University logos below */}
         <div className={styles.heroUniversityWrapper}>
           <div className={styles.heroUniversityStrip}>
-            {data.universities.map((uni, index) => (
+            {[...data.universities, ...data.universities, ...data.universities].map((uni, index) => (
               <div key={index} className={styles.heroUniversityCard}>
                 <Image
                   src={`https://logo.clearbit.com/${uni.domain}`}
