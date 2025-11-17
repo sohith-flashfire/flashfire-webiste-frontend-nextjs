@@ -58,7 +58,11 @@ export default function HomePageFAQClient() {
             GOT FURTHER QUESTIONS? LET&rsquo;S TALK!
           </h5>
 
-          <h2 className={styles.demoHeading}>
+          <h2 
+            className={styles.demoHeading}
+            onClick={() => window.open(WHATSAPP_SUPPORT_URL, "_blank")}
+            style={{ cursor: "pointer" }}
+          >
             BOOK A DEMO{" "}
             <span
               className={`${styles.fireIcon} inline-flex items-center -mx-4 `}
