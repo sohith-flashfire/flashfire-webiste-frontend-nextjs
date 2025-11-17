@@ -9,6 +9,7 @@ import {
   FormData,
 } from "@/src/utils/LocalStorageUtils";
 import CalendlyModal from "@/src/components/calendlyModal/CalendlyModal";
+import { trackFormStart, trackFormSubmit, trackModalOpen, trackModalClose } from "@/src/utils/PostHogTracking";
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -39,6 +40,12 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
     if (isOpen) {
       const savedData = loadFormData();
       setFormData(savedData);
+      // Track modal open
+      trackModalOpen("signup_modal", "hero_cta", {
+        trigger_source: "hero_button"
+      });
+      // Track form start
+      trackFormStart("signup_form", "initial");
     }
   }, [isOpen]);
 
@@ -156,6 +163,15 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
         localStorage.setItem("submitted", "true");
       }
 
+      // PostHog tracking - form submit
+      trackFormSubmit("signup_form", {
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        work_authorization: formData.workAuthorization,
+        country_code: formData.countryCode
+      });
+
       // Always proceed to Calendly after form submission
       // Backend handles Discord notifications regardless of success/duplicate
       await SaveDetailsToDB();
@@ -174,6 +190,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
   const handleCalendlyClose = () => {
     setIsCalendlyOpen(false);
     clearFormData(); // Clear form data after Calendly is closed
+    trackModalClose("signup_modal", "programmatic");
     onClose(); // Close the signup modal
   };
 
@@ -193,7 +210,10 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
               </p>
             </div>
             <button
-              onClick={onClose}
+              onClick={() => {
+                trackModalClose("signup_modal", "button");
+                onClose();
+              }}
               className="text-gray-400 hover:text-gray-600 transition-colors p-1"
             >
               <X className="w-5 h-5" />

@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./homePageCareerCTA.module.css";
 import { FaBolt } from "react-icons/fa";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
+import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
 
 export default function HomePageCareerCTA() {
   return (
@@ -47,6 +48,16 @@ export default function HomePageCareerCTA() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaButton}
+              onClick={() => {
+                trackButtonClick("Schedule a Free Career Call", "career_cta", "cta", {
+                  button_location: "career_section",
+                  section: "career_cta"
+                });
+                trackExternalLink(WHATSAPP_SUPPORT_URL, "Schedule a Free Career Call", "career_cta", {
+                  link_type: "whatsapp_support",
+                  contact_method: "whatsapp"
+                });
+              }}
             >
               Schedule a Free Career Call
             </a>

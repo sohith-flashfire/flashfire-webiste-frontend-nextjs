@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./navbar.module.css";
 import type { NavLink, NavbarCTA } from "../../types/navbarData";
+import { trackButtonClick, trackModalOpen } from "@/src/utils/PostHogTracking";
 
 type Props = {
   links: NavLink[];
@@ -63,6 +64,12 @@ export default function NavbarClient({ links, ctas }: Props) {
               className={styles.navSecondaryButton}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                trackButtonClick(ctas.secondary.label, "navigation", "secondary", {
+                  button_location: "navbar_desktop",
+                  navigation_type: "secondary_cta"
+                });
+              }}
             >
               {ctas.secondary.label}
             </a>
@@ -70,6 +77,12 @@ export default function NavbarClient({ links, ctas }: Props) {
             <Link
               href={ctas.secondary.href}
               className={styles.navSecondaryButton}
+              onClick={() => {
+                trackButtonClick(ctas.secondary.label, "navigation", "secondary", {
+                  button_location: "navbar_desktop",
+                  navigation_type: "secondary_cta"
+                });
+              }}
             >
               {ctas.secondary.label}
             </Link>
@@ -80,6 +93,17 @@ export default function NavbarClient({ links, ctas }: Props) {
               className={styles.navPrimaryButton}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                trackButtonClick(ctas.primary.label, "navigation", "cta", {
+                  button_location: "navbar_desktop",
+                  navigation_type: "primary_cta"
+                });
+                if (ctas.primary.href.includes("calendly")) {
+                  trackModalOpen("calendly_modal", "navigation_button", {
+                    trigger_source: "navbar_cta"
+                  });
+                }
+              }}
             >
               {ctas.primary.label}
             </a>
@@ -87,6 +111,17 @@ export default function NavbarClient({ links, ctas }: Props) {
             <Link
               href={ctas.primary.href}
               className={styles.navPrimaryButton}
+              onClick={() => {
+                trackButtonClick(ctas.primary.label, "navigation", "cta", {
+                  button_location: "navbar_desktop",
+                  navigation_type: "primary_cta"
+                });
+                if (ctas.primary.href.includes("calendly")) {
+                  trackModalOpen("calendly_modal", "navigation_button", {
+                    trigger_source: "navbar_cta"
+                  });
+                }
+              }}
             >
               {ctas.primary.label}
             </Link>
@@ -123,6 +158,12 @@ export default function NavbarClient({ links, ctas }: Props) {
               className={styles.navMobileSecondary}
               target={secondaryIsExternal ? "_blank" : undefined}
               rel={secondaryIsExternal ? "noopener noreferrer" : undefined}
+              onClick={() => {
+                trackButtonClick(ctas.secondary.label, "navigation", "secondary", {
+                  button_location: "navbar_mobile",
+                  navigation_type: "secondary_cta"
+                });
+              }}
             >
               {ctas.secondary.label}
             </a>
@@ -131,6 +172,17 @@ export default function NavbarClient({ links, ctas }: Props) {
               className={styles.navMobilePrimary}
               target={primaryIsExternal ? "_blank" : undefined}
               rel={primaryIsExternal ? "noopener noreferrer" : undefined}
+              onClick={() => {
+                trackButtonClick(ctas.primary.label, "navigation", "cta", {
+                  button_location: "navbar_mobile",
+                  navigation_type: "primary_cta"
+                });
+                if (ctas.primary.href.includes("calendly")) {
+                  trackModalOpen("calendly_modal", "navigation_button", {
+                    trigger_source: "navbar_mobile_cta"
+                  });
+                }
+              }}
             >
               {ctas.primary.label}
             </a>

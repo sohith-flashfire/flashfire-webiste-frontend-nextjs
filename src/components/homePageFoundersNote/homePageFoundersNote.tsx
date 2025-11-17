@@ -56,11 +56,11 @@ export default function HomePageFoundersNote() {
           <div className="relative w-full max-w-[330px] -mt-10 max-[1024px]:mt-0 max-[1024px]:max-w-[280px]">
             <div className="border-[5px] border-white outline outline-2 outline-[#ff4c00] overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.1)] w-full">
               <Image
-                src="/images/partner-adit-jain.jpg"
+                src="/images/adit-jain.png"
                 alt="Adit Jain"
                 width={280}
                 height={400}
-                className="w-full h-[26rem] object-cover object-top transition-transform duration-300 hover:scale-[1.03] max-[1024px]:h-[22rem] max-[768px]:h-[18rem]"
+                className="w-full h-[26rem] object-cover object-[center_20%] transition-transform duration-300 hover:scale-[1.03] max-[1024px]:h-[22rem] max-[768px]:h-[18rem]"
               />
 
               <div className="absolute bottom-2 left-2 right-2 bg-black/90 text-white flex items-center justify-between px-4 py-3 backdrop-blur-[3px] text-left border border-white rounded-lg">
@@ -69,7 +69,7 @@ export default function HomePageFoundersNote() {
                   <p className="text-base font-semibold m-0">Adit</p>
                 </div>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/adit-jain-907555218/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white text-xl transition-transform duration-200 hover:scale-110 hover:text-[#0077b5]"

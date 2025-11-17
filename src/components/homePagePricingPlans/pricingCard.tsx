@@ -1,6 +1,7 @@
 "use client";
 
 import { FaBolt } from "react-icons/fa";
+import { trackButtonClick } from "@/src/utils/PostHogTracking";
 
 interface PricingCardProps {
   title: string;
@@ -98,6 +99,14 @@ export default function PricingCard({
       <button
         className="bg-black text-white border-none py-[0.9rem] px-4 font-semibold text-[0.95rem] rounded-[0.4rem] w-full cursor-pointer transition-all duration-300 hover:bg-[#111] max-[768px]:text-[0.9rem] max-[768px]:py-3 max-[480px]:text-[0.85rem] max-[480px]:py-[0.7rem] max-[480px]:px-[0.9rem]"
         onClick={() => {
+          // PostHog tracking
+          trackButtonClick(`Get Me Interview - ${title}`, "pricing_cta", "cta", {
+            button_location: "pricing_plan",
+            plan_name: title,
+            plan_price: price,
+            plan_subtitle: subTitle
+          });
+          
           if (paymentLink) {
             window.open(paymentLink, "_blank");
           }

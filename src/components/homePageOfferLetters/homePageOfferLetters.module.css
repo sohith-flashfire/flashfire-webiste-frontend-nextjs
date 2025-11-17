@@ -64,6 +64,7 @@
 }
 
 .imagePlaceholder {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: #f3f3f3;
@@ -78,15 +79,20 @@
 /* === Overlay === */
 .offerOverlay {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: rgba(0, 0, 0, 0.85);
+  bottom: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 50px;
+  background-color: #1a1a1a;
+  border: 2px solid #ff4c00;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.8rem;
   color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
 }
 
 .profileInfo {
@@ -140,6 +146,16 @@
   color: #000;
 }
 
+.linkedinIconDummy {
+  cursor: default;
+  pointer-events: none;
+}
+
+.linkedinIconDummy:hover {
+  background-color: transparent;
+  color: #fff;
+}
+
 /* === Responsive === */
 @media (max-width: 1024px) {
   .offerHeading {
@@ -175,8 +191,11 @@
   }
 
   .offerOverlay {
-    height: 50px;
-    padding: 0.5rem 0.8rem;
+    bottom: 0.6rem;
+    left: 0.6rem;
+    right: 0.6rem;
+    height: 45px;
+    padding: 0.4rem 0.7rem;
   }
 
   .avatar {
@@ -214,7 +233,11 @@
   }
 
   .offerOverlay {
-    height: 45px;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 40px;
+    padding: 0.35rem 0.6rem;
   }
 
   .name {

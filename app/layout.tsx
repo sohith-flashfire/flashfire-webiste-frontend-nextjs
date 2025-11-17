@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
+import { PHProvider } from "@/src/components/PostHogProvider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -58,7 +59,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
-        {children}
+        <PHProvider>{children}</PHProvider>
         {/* Calendly Script */}
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"

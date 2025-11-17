@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
+import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
 
 export default function HomePagePTNote() {
   const handleWhatsAppClick = () => {
@@ -10,6 +11,17 @@ export default function HomePagePTNote() {
       "Hi! I\u2019m interested in Flashfire\u2019s AI-powered job search automation. Can you help me get started?",
     );
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    
+    // PostHog tracking
+    trackButtonClick("Connect on WhatsApp", "pt_note_section", "cta", {
+      button_location: "pt_note_whatsapp",
+      section: "pt_note"
+    });
+    trackExternalLink(whatsappUrl, "Connect on WhatsApp", "pt_note_section", {
+      link_type: "whatsapp_support",
+      contact_method: "whatsapp"
+    });
+    
     window.open(whatsappUrl, "_blank");
   };
 
@@ -54,7 +66,7 @@ export default function HomePagePTNote() {
 
           <div className="absolute bottom-0 right-6 overflow-hidden">
             <Image
-              src="/images/pranjal-tripathi.png"
+              src="/images/pranjal_cto.png"
               alt="Pranjal Tripathi"
               width={220}
               height={220}

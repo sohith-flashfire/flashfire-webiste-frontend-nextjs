@@ -17,76 +17,85 @@ const offerLetters: OfferLetterData[] = [
     name: "Kanchan",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/dr-kanchan-yadav-ba0b18106/",
-    imagePath: "/images/offer-placeholder.jpg",
+    imagePath: "/images/kanchan_offer.png",
+    profileImagePath: "/images/KANCHAN.png",
   },
   {
     name: "Uhtiha",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/uhitha-doddapaneni-903932128/",
-    imagePath: "/images/offer-placeholder.jpg",
+    imagePath: "/images/uhitha_offer.png",
     profileImagePath: "/images/uhitha.jpeg",
   },
   {
     name: "Anjali",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/anjalishah6198/",
-    imagePath: "/images/anjali.jpeg",
+    imagePath: "/images/anjali_offer.png",
+    profileImagePath: "/images/anjali.jpeg",
   },
   {
     name: "Akrati",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/akratimalviya/",
-    imagePath: "/images/offer-placeholder.jpg",
+    imagePath: "/images/akrati_offer.png",
     profileImagePath: "/images/akrati.jpeg",
   },
   {
     name: "Neha",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/neha-senapati/",
-    imagePath: "/images/offer-placeholder.jpg",
+    imagePath: "/images/neha_offer.png",
     profileImagePath: "/images/neha.png",
   },
   {
     name: "Teja",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/tejasunkara/",
-    imagePath: "/images/offer-placeholder.jpg",
+    imagePath: "/images/teja_offer.png",
+    profileImagePath: "/images/TEJA.jpeg",
   },
   {
     name: "Aryan",
     company: "Company",
     linkedinUrl: "#",
-    imagePath: "/images/aryan.jpg",
+    imagePath: "/images/aryan_offer.png",
+    profileImagePath: "/images/aryan.jpg",
   },
   {
     name: "Amit",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/amit-gupta-828570242/",
-    imagePath: "/images/amit.jpg",
+    imagePath: "/images/amit_offer.png",
+    profileImagePath: "/images/amit.jpg",
   },
   {
     name: "Rudraksh",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/rudraksh-tripathi-89291223b/",
-    imagePath: "/images/rudraksh.jpg",
+    imagePath: "/images/rudraksh_offer.png",
+    profileImagePath: "/images/rudraksh.jpg",
   },
   {
     name: "Sai Krishna",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/sai-krishna-grandhi/",
-    imagePath: "/images/offer-placeholder.jpg",
+    imagePath: "/images/saikrishna_offer.png",
+    profileImagePath: "/images/SAI KRISHNA.jpeg",
   },
   {
     name: "Rijul Jain",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/-rijuljain-/",
-    imagePath: "/images/rijul.jpg",
+    imagePath: "/images/rijul_offer.png",
+    profileImagePath: "/images/rijul.jpg",
   },
   {
     name: "Aman Guleria",
     company: "Company",
     linkedinUrl: "https://www.linkedin.com/in/aman-guleria/",
-    imagePath: "/images/aman.jpg",
+    imagePath: "/images/aman_offer.png",
+    profileImagePath: "/images/aman.jpg",
   },
 ];
 
@@ -135,7 +144,7 @@ export default function HomePageOfferLettersClient() {
                     <p className={styles.company}>{offer.company}</p>
                   </div>
                 </div>
-                {offer.linkedinUrl !== "#" && (
+                {offer.linkedinUrl !== "#" ? (
                   <Link
                     href={offer.linkedinUrl}
                     target="_blank"
@@ -144,6 +153,10 @@ export default function HomePageOfferLettersClient() {
                   >
                     in
                   </Link>
+                ) : (
+                  <span className={`${styles.linkedinIcon} ${styles.linkedinIconDummy}`}>
+                    in
+                  </span>
                 )}
               </div>
             </div>
@@ -187,7 +200,7 @@ export default function HomePageOfferLettersClient() {
                     <p className={styles.company}>{offer.company}</p>
                   </div>
                 </div>
-                {offer.linkedinUrl !== "#" && (
+                {offer.linkedinUrl !== "#" ? (
                   <Link
                     href={offer.linkedinUrl}
                     target="_blank"
@@ -196,6 +209,10 @@ export default function HomePageOfferLettersClient() {
                   >
                     in
                   </Link>
+                ) : (
+                  <span className={`${styles.linkedinIcon} ${styles.linkedinIconDummy}`}>
+                    in
+                  </span>
                 )}
               </div>
             </div>

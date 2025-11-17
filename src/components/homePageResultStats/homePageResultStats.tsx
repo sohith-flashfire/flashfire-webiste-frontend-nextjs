@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 import styles from "./homePageResultStats.module.css";
+import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
 
 export default function HomePageResultStats() {
   return (
@@ -53,6 +56,16 @@ export default function HomePageResultStats() {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.resultButton}
+          onClick={() => {
+            trackButtonClick("Get Me Interview", "result_stats_cta", "cta", {
+              button_location: "result_stats_section",
+              section: "result_stats"
+            });
+            trackExternalLink(WHATSAPP_SUPPORT_URL, "Get Me Interview", "result_stats_section", {
+              link_type: "whatsapp_support",
+              contact_method: "whatsapp"
+            });
+          }}
         >
           Get Me Interview →
         </a>

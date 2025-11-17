@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./heroSection.module.css";
 import { HeroSectionData } from "@/src/types/heroSectionData";
 import SignupModal from "@/src/components/signupModal/SignupModal";
+import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 
 type Props = {
   data: HeroSectionData;
@@ -45,7 +46,19 @@ export default function HeroSectionClient({ data }: Props) {
 
       {/* === CTA Button === */}
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          // PostHog tracking
+          trackButtonClick("Get me interview", "hero_cta", "cta", {
+            button_location: "hero_main_cta",
+            section: "hero_landing"
+          });
+          trackSignupIntent("hero_cta", {
+            signup_source: "hero_main_button",
+            funnel_stage: "signup_intent"
+          });
+          
+          setIsModalOpen(true);
+        }}
         className={styles.heroCTAButton}
       >
         {data.cta.label}

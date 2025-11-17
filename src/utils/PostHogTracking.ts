@@ -40,6 +40,12 @@ export interface PostHogEventProperties {
   screen_size?: string;
   browser?: string;
 
+  // Geo context (for country-wise stats)
+  country_code?: string;
+  country_name?: string;
+  is_canada?: boolean;
+  locale?: string;
+
   // Business context
   lead_source?: string;
   conversion_value?: number;
@@ -71,6 +77,11 @@ const safeCapture = (
 
 // Get current page context
 const getPageContext = (): Partial<PostHogEventProperties> => {
+  // Check if we're in browser environment (Next.js SSR)
+  if (typeof window === "undefined") {
+    return {};
+  }
+
   return {
     page_url: window.location.href,
     page_title: document.title,
@@ -85,8 +96,40 @@ const getPageContext = (): Partial<PostHogEventProperties> => {
   };
 };
 
+// Get country code from localStorage or detect from URL
+const getCountryContext = (): Partial<PostHogEventProperties> => {
+  // Check if we're in browser environment (Next.js SSR)
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  // Check if user is on Canada page
+  const isCanada = window.location.pathname.startsWith("/en-ca");
+  const countryCode = localStorage.getItem("ff_country_code_v1") || (isCanada ? "CA" : "US");
+  
+  // Map country codes to names
+  const countryNames: Record<string, string> = {
+    CA: "Canada",
+    US: "United States",
+    IN: "India",
+    GB: "United Kingdom",
+  };
+
+  return {
+    country_code: countryCode,
+    country_name: countryNames[countryCode] || countryCode,
+    is_canada: isCanada,
+    locale: isCanada ? "en-ca" : "en-us",
+  };
+};
+
 // Get UTM parameters from localStorage or URL
 const getUTMContext = (): Partial<PostHogEventProperties> => {
+  // Check if we're in browser environment (Next.js SSR)
+  if (typeof window === "undefined") {
+    return {};
+  }
+
   const utmSource =
     localStorage.getItem("utm_source") ||
     new URLSearchParams(window.location.search).get("utm_source");
@@ -117,6 +160,7 @@ export const trackButtonClick = (
   safeCapture("button_click", {
     ...getPageContext(),
     ...getUTMContext(),
+    ...getCountryContext(),
     button_text: buttonText,
     button_location: location,
     button_type: buttonType,
@@ -133,6 +177,7 @@ export const trackFormStart = (
   safeCapture("form_start", {
     ...getPageContext(),
     ...getUTMContext(),
+    ...getCountryContext(),
     form_name: formName,
     form_step: formStep,
     component: "form",
@@ -163,6 +208,7 @@ export const trackFormSubmit = (
   safeCapture("form_submit", {
     ...getPageContext(),
     ...getUTMContext(),
+    ...getCountryContext(),
     form_name: formName,
     form_data: formData,
     component: "form",
@@ -196,6 +242,7 @@ export const trackPageView = (
   safeCapture("page_view", {
     ...getPageContext(),
     ...getUTMContext(),
+    ...getCountryContext(),
     page_name: pageName,
     section: section,
     component: "page",

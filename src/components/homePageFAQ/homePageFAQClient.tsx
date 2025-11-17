@@ -6,6 +6,7 @@ import { FaPlus, FaTimes } from "react-icons/fa";
 import { questionsData } from "@/src/data/questionsData";
 import Image from "next/image";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
+import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
 
 export default function HomePageFAQClient() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -34,7 +35,14 @@ export default function HomePageFAQClient() {
           >
             <button
               className={styles.faqQuestion}
-              onClick={() => handleToggle(index)}
+              onClick={() => {
+                handleToggle(index);
+                trackButtonClick(`FAQ ${index + 1}`, "faq_item", "link", {
+                  button_location: "faq_section",
+                  faq_question: faq.question,
+                  faq_index: index + 1
+                });
+              }}
             >
               <span>{faq.question}</span>
               <span className={styles.icon}>
@@ -60,7 +68,17 @@ export default function HomePageFAQClient() {
 
           <h2 
             className={styles.demoHeading}
-            onClick={() => window.open(WHATSAPP_SUPPORT_URL, "_blank")}
+            onClick={() => {
+              trackButtonClick("BOOK A DEMO CALL", "faq_demo_cta", "cta", {
+                button_location: "faq_demo_heading",
+                section: "faq"
+              });
+              trackExternalLink(WHATSAPP_SUPPORT_URL, "BOOK A DEMO CALL", "faq_demo_cta", {
+                link_type: "whatsapp_support",
+                contact_method: "whatsapp"
+              });
+              window.open(WHATSAPP_SUPPORT_URL, "_blank");
+            }}
             style={{ cursor: "pointer" }}
           >
             BOOK A DEMO{" "}
@@ -79,14 +97,24 @@ export default function HomePageFAQClient() {
           </h2>
 
           <p className={styles.demoText}>
-            We get it, <em>finding the right job isn’t easy.</em> Book a quick
+            We get it, <em>finding the right job isn't easy.</em> Book a quick
             chat with our founder and see how Flashfire can help you land
             interviews faster.
           </p>
 
           <button 
             className={styles.demoButton}
-            onClick={() => window.open(WHATSAPP_SUPPORT_URL, "_blank")}
+            onClick={() => {
+              trackButtonClick("Book My Demo Call", "faq_demo_cta", "cta", {
+                button_location: "faq_demo_button",
+                section: "faq"
+              });
+              trackExternalLink(WHATSAPP_SUPPORT_URL, "Book My Demo Call", "faq_demo_cta", {
+                link_type: "whatsapp_support",
+                contact_method: "whatsapp"
+              });
+              window.open(WHATSAPP_SUPPORT_URL, "_blank");
+            }}
           >
             Book My Demo Call →
           </button>
