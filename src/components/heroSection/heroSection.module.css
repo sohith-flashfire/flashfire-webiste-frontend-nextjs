@@ -45,7 +45,7 @@
   color: #000;
   max-width: 900px;
   width: 100%;
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;

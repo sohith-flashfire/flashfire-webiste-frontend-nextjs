@@ -1,12 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./homePageCareerCTA.module.css";
 import { FaBolt } from "react-icons/fa";
-import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
-import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
+import SignupModal from "@/src/components/signupModal/SignupModal";
+import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
+import { GTagUTM } from "@/src/utils/GTagUTM";
 
 export default function HomePageCareerCTA() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section className={styles.careerSection}>
       <div className={styles.container}>
@@ -43,24 +46,42 @@ export default function HomePageCareerCTA() {
           </ul>
 
           <div className={styles.ctaRow}>
-            <a
-              href={WHATSAPP_SUPPORT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
               className={styles.ctaButton}
               onClick={() => {
+                const utmSource = typeof window !== "undefined" 
+                  ? localStorage.getItem("utm_source") || "WEBSITE"
+                  : "WEBSITE";
+                const utmMedium = typeof window !== "undefined"
+                  ? localStorage.getItem("utm_medium") || "Career_CTA_Section"
+                  : "Career_CTA_Section";
+                
+                GTagUTM({
+                  eventName: "sign_up_click",
+                  label: "Career_CTA_Button",
+                  utmParams: {
+                    utm_source: utmSource,
+                    utm_medium: utmMedium,
+                    utm_campaign: typeof window !== "undefined"
+                      ? localStorage.getItem("utm_campaign") || "Website"
+                      : "Website",
+                  },
+                });
+                
                 trackButtonClick("Schedule a Free Career Call", "career_cta", "cta", {
                   button_location: "career_section",
                   section: "career_cta"
                 });
-                trackExternalLink(WHATSAPP_SUPPORT_URL, "Schedule a Free Career Call", "career_cta", {
-                  link_type: "whatsapp_support",
-                  contact_method: "whatsapp"
+                trackSignupIntent("career_cta", {
+                  signup_source: "career_cta_button",
+                  funnel_stage: "signup_intent"
                 });
+                
+                setIsModalOpen(true);
               }}
             >
               Schedule a Free Career Call
-            </a>
+            </button>
             <div className={styles.userNote}>
               <div className={styles.userAvatars}>
                 <Image
@@ -117,6 +138,12 @@ export default function HomePageCareerCTA() {
           </div>
         </div>
       </div>
+
+      {/* === Signup Modal === */}
+      <SignupModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

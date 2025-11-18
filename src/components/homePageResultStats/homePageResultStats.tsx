@@ -1,11 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 import styles from "./homePageResultStats.module.css";
-import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
+import SignupModal from "@/src/components/signupModal/SignupModal";
+import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
+import { GTagUTM } from "@/src/utils/GTagUTM";
 
 export default function HomePageResultStats() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className={styles.resultSection}>
       {/* Right Side (Image first in HTML so it appears on top on mobile) */}
@@ -51,25 +55,50 @@ export default function HomePageResultStats() {
           *Based on verified user data from 2024-25 cohort.
         </p>
 
-        <a
-          href={WHATSAPP_SUPPORT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
           className={styles.resultButton}
           onClick={() => {
+            const utmSource = typeof window !== "undefined" 
+              ? localStorage.getItem("utm_source") || "WEBSITE"
+              : "WEBSITE";
+            const utmMedium = typeof window !== "undefined"
+              ? localStorage.getItem("utm_medium") || "Result_Stats_Section"
+              : "Result_Stats_Section";
+            
+            GTagUTM({
+              eventName: "sign_up_click",
+              label: "Result_Stats_Get_Me_Interview_Button",
+              utmParams: {
+                utm_source: utmSource,
+                utm_medium: utmMedium,
+                utm_campaign: typeof window !== "undefined"
+                  ? localStorage.getItem("utm_campaign") || "Website"
+                  : "Website",
+              },
+            });
+            
+            // PostHog tracking
             trackButtonClick("Get Me Interview", "result_stats_cta", "cta", {
               button_location: "result_stats_section",
               section: "result_stats"
             });
-            trackExternalLink(WHATSAPP_SUPPORT_URL, "Get Me Interview", "result_stats_section", {
-              link_type: "whatsapp_support",
-              contact_method: "whatsapp"
+            trackSignupIntent("result_stats_cta", {
+              signup_source: "result_stats_button",
+              funnel_stage: "signup_intent"
             });
+            
+            setIsModalOpen(true);
           }}
         >
           Get Me Interview →
-        </a>
+        </button>
       </div>
+
+      {/* === Signup Modal === */}
+      <SignupModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

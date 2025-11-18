@@ -11,7 +11,7 @@ flashfire-website-nextjs-main/
 │   ├── faq/                     # FAQ section page
 │   ├── testimonials/            # Testimonials section page
 │   ├── blogs/                   # Blog listing page
-│   ├── employees/               # Employer form page
+│   ├── employers/               # Employer form page
 │   ├── contact-us/              # Contact form page
 │   ├── privacy-policy/          # Privacy policy page
 │   ├── terms-of-service/        # Terms of service page

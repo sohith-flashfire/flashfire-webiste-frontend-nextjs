@@ -4,6 +4,7 @@ import "./globals.css";
 import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 import { PHProvider } from "@/src/components/PostHogProvider";
+import WhatsAppButton from "@/src/components/WhatsAppButton/WhatsAppButton";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -143,7 +144,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
-        <PHProvider>{children}</PHProvider>
+        <PHProvider>
+          {children}
+          <WhatsAppButton />
+        </PHProvider>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-4P890VGD8D"

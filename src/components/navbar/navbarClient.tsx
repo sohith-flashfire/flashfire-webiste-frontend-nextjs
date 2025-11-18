@@ -35,52 +35,55 @@ export default function NavbarClient({ links, ctas }: Props) {
     return `${prefix}${href}`;
   };
 
-  // Monthly countdown timer - resets at end of each month
+  // Countdown timer - Set end date (November 28, 2025 11:59 PM)
   useEffect(() => {
-    const getEndOfCurrentMonth = () => {
-      const now = new Date();
-      // Get the last day of the current month
-      const year = now.getFullYear();
-      const month = now.getMonth();
-      // Get the last day of the month (0 means last day of previous month, so we use next month's 0th day)
-      const lastDay = new Date(year, month + 1, 0).getDate();
-      // Set target to last day of current month at 11:59:59 PM
-      return new Date(year, month, lastDay, 23, 59, 59).getTime();
-    };
+    // Only run on client side
+    if (typeof window === "undefined") return;
 
-    const updateCountdown = () => {
+    // Set the target date: November 28, 2025 at 11:59:59 PM
+    const targetDate = new Date(2025, 10, 28, 23, 59, 59); // Month is 0-indexed, so 10 = November
+
+    const calculateTimeLeft = () => {
       const now = new Date().getTime();
-      const targetDate = getEndOfCurrentMonth();
-      const difference = targetDate - now;
+      const endDate = targetDate.getTime();
+      const difference = endDate - now;
 
       if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor(
+          (difference % (1000 * 60 * 60)) / (1000 * 60),
+        );
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
       } else {
-        // If we've passed the end of the month, reset to next month's end
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
 
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+    // Calculate immediately
+    calculateTimeLeft();
+
+    // Update every second
+    const interval = setInterval(calculateTimeLeft, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      <nav 
-        className={styles.navContainer}
-        style={{
-          backdropFilter: 'blur(120px)',
-          WebkitBackdropFilter: 'blur(120px)',
-        }}
-      >
+      {/* Sticky Container for Navbar and Banner */}
+      <div className="sticky top-0 z-50">
+        <nav 
+          className={styles.navContainer}
+          style={{
+            backdropFilter: 'blur(120px)',
+            WebkitBackdropFilter: 'blur(120px)',
+          }}
+        >
       <div className={styles.navInner}>
         {/* Left Section: Logo */}
         <div className={styles.navLeft}>
@@ -93,7 +96,12 @@ export default function NavbarClient({ links, ctas }: Props) {
         <ul className={styles.navLinks}>
           {links.map((link) => (
             <li key={link.href} className={styles.navLinkItem}>
-              <a href={getHref(link.href)} className={styles.navLinkText}>
+              <a 
+                href={getHref(link.href)} 
+                className={styles.navLinkText}
+                target={link.target}
+                rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+              >
                 {link.name}
               </a>
             </li>
@@ -190,7 +198,12 @@ export default function NavbarClient({ links, ctas }: Props) {
           <ul className={styles.navMobileLinks}>
             {links.map((link) => (
               <li key={link.href}>
-                <a href={getHref(link.href)} className={styles.navMobileLink}>
+                <a 
+                  href={getHref(link.href)} 
+                  className={styles.navMobileLink}
+                  target={link.target}
+                  rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+                >
                   {link.name}
                 </a>
               </li>
@@ -286,6 +299,7 @@ export default function NavbarClient({ links, ctas }: Props) {
         </div>
       </div>
     </div>
+      </div>
     </>
   );
 }

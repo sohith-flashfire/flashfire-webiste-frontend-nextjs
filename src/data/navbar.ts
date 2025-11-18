@@ -7,8 +7,8 @@ export const navbarLinks: NavLink[] = [
   { name: "Testimonials", href: "/testimonials" },
   { name: "Pricing", href: "/pricing" },
   { name: "FAQ", href: "/faq" },
-  { name: "Blog", href: "/blogs" },
-  { name: "Employees", href: "/employees" },
+  { name: "Blog", href: "/blogs", target: "_blank" },
+  { name: "Employers", href: "/employers", target: "_blank" },
 ];
 
 export const navbarCTAs: NavbarCTA = {

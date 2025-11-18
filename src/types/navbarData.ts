@@ -1,6 +1,7 @@
 export interface NavLink {
   name: string;
   href: string;
+  target?: string;
 }
 
 export interface CTA {

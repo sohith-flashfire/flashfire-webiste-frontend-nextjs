@@ -5,11 +5,13 @@ import styles from "./homePageFAQ.module.css";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { questionsData } from "@/src/data/questionsData";
 import Image from "next/image";
-import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
-import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
+import SignupModal from "@/src/components/signupModal/SignupModal";
+import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
+import { GTagUTM } from "@/src/utils/GTagUTM";
 
 export default function HomePageFAQClient() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleToggle = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -69,15 +71,35 @@ export default function HomePageFAQClient() {
           <h2 
             className={styles.demoHeading}
             onClick={() => {
+              const utmSource = typeof window !== "undefined" 
+                ? localStorage.getItem("utm_source") || "WEBSITE"
+                : "WEBSITE";
+              const utmMedium = typeof window !== "undefined"
+                ? localStorage.getItem("utm_medium") || "FAQ_Demo_Section"
+                : "FAQ_Demo_Section";
+              
+              GTagUTM({
+                eventName: "sign_up_click",
+                label: "FAQ_Demo_Heading_Button",
+                utmParams: {
+                  utm_source: utmSource,
+                  utm_medium: utmMedium,
+                  utm_campaign: typeof window !== "undefined"
+                    ? localStorage.getItem("utm_campaign") || "Website"
+                    : "Website",
+                },
+              });
+              
               trackButtonClick("BOOK A DEMO CALL", "faq_demo_cta", "cta", {
                 button_location: "faq_demo_heading",
                 section: "faq"
               });
-              trackExternalLink(WHATSAPP_SUPPORT_URL, "BOOK A DEMO CALL", "faq_demo_cta", {
-                link_type: "whatsapp_support",
-                contact_method: "whatsapp"
+              trackSignupIntent("faq_demo_cta", {
+                signup_source: "faq_demo_heading",
+                funnel_stage: "signup_intent"
               });
-              window.open(WHATSAPP_SUPPORT_URL, "_blank");
+              
+              setIsModalOpen(true);
             }}
             style={{ cursor: "pointer" }}
           >
@@ -105,15 +127,35 @@ export default function HomePageFAQClient() {
           <button 
             className={styles.demoButton}
             onClick={() => {
+              const utmSource = typeof window !== "undefined" 
+                ? localStorage.getItem("utm_source") || "WEBSITE"
+                : "WEBSITE";
+              const utmMedium = typeof window !== "undefined"
+                ? localStorage.getItem("utm_medium") || "FAQ_Demo_Section"
+                : "FAQ_Demo_Section";
+              
+              GTagUTM({
+                eventName: "sign_up_click",
+                label: "FAQ_Demo_Button",
+                utmParams: {
+                  utm_source: utmSource,
+                  utm_medium: utmMedium,
+                  utm_campaign: typeof window !== "undefined"
+                    ? localStorage.getItem("utm_campaign") || "Website"
+                    : "Website",
+                },
+              });
+              
               trackButtonClick("Book My Demo Call", "faq_demo_cta", "cta", {
                 button_location: "faq_demo_button",
                 section: "faq"
               });
-              trackExternalLink(WHATSAPP_SUPPORT_URL, "Book My Demo Call", "faq_demo_cta", {
-                link_type: "whatsapp_support",
-                contact_method: "whatsapp"
+              trackSignupIntent("faq_demo_cta", {
+                signup_source: "faq_demo_button",
+                funnel_stage: "signup_intent"
               });
-              window.open(WHATSAPP_SUPPORT_URL, "_blank");
+              
+              setIsModalOpen(true);
             }}
           >
             Book My Demo Call →
@@ -124,6 +166,12 @@ export default function HomePageFAQClient() {
           </p>
         </div>
       </div>
+
+      {/* === Signup Modal === */}
+      <SignupModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

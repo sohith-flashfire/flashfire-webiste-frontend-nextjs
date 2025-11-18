@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import styles from "./footer.module.css";
-import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -76,6 +76,14 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <FaInstagram />
+              </Link>
+              <Link
+                href="https://www.youtube.com/@flashfireindia"
+                aria-label="YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube />
               </Link>
             </div>
           </div>

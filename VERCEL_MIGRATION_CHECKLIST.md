@@ -63,7 +63,7 @@ NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 - `/faq` - FAQ page ✅
 - `/feature` - Features page ✅
 - `/testimonials` - Testimonials ✅
-- `/employees` - Employees page ✅
+- `/employers` - Employers page ✅
 - `/contact-us` - Contact page ✅
 - `/privacy-policy` - Privacy policy ✅
 - `/terms-of-service` - Terms of service ✅
