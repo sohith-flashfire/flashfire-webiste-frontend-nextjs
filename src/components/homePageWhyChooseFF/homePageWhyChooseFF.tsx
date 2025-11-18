@@ -29,7 +29,7 @@ export default function HomePageWhyChooseFF() {
           Why Choose Flashfire?
         </h2>
         <p className="text-[20px] font-medium text-[#02060A] leading-[139%] tracking-[-0.03em] font-['Satoshi',sans-serif] max-[1024px]:text-[1.05rem] max-[768px]:text-[1rem]">
-          We don't just apply, we <strong className="font-bold italic">make you get noticed.</strong>{" "}
+          We don&apos;t just apply, we <strong className="font-bold italic">make you get noticed.</strong>{" "}
           Flashfire combines{" "}
           <span className="text-[#ff4c00] font-semibold">AI precision</span>
           <br />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, User, Phone, Mail } from "lucide-react";
 import {
   loadFormData,
@@ -17,16 +17,11 @@ interface SignupModalProps {
 }
 
 export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
-  const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    phone: "",
-    countryCode: "+1",
-    email: "",
-    workAuthorization: "",
-  });
+  const [formData, setFormData] = useState<FormData>(() => loadFormData());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+  const prevIsOpenRef = useRef(isOpen);
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
   
@@ -35,11 +30,19 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
     // In production, this should be set via environment variables
   }
 
-  // Load form data from localStorage on component mount
+  // Load form data from localStorage when modal opens and track events
   useEffect(() => {
-    if (isOpen) {
+    const wasOpen = prevIsOpenRef.current;
+    prevIsOpenRef.current = isOpen;
+
+    if (isOpen && !wasOpen) {
+      // Modal just opened - reload form data and track events
       const savedData = loadFormData();
-      setFormData(savedData);
+      // Use requestAnimationFrame to defer state update and avoid synchronous setState warning
+      requestAnimationFrame(() => {
+        setFormData(savedData);
+      });
+      
       // Track modal open
       trackModalOpen("signup_modal", "hero_cta", {
         trigger_source: "hero_button"
@@ -109,7 +112,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       if (responseText) {
         try {
           result = JSON.parse(responseText);
-        } catch (parseError) {
+        } catch {
           // If not JSON, that's okay - we'll use status code
           console.log("Response is not JSON, using status code");
         }

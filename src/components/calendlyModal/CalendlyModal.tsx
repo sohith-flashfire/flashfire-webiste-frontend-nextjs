@@ -20,6 +20,37 @@ interface CalendlyModalProps {
   };
 }
 
+interface CalendlyEventPayload {
+  invitee?: {
+    email?: string;
+    name?: string;
+    uri?: string;
+  };
+  event?: {
+    uri?: string;
+    start_time?: string;
+    start_time_pretty?: string;
+    end_time?: string;
+    location?: {
+      join_url?: string;
+    };
+  };
+  name?: string;
+  email?: string;
+}
+
+interface CalendlyEvent {
+  data?: {
+    payload?: CalendlyEventPayload;
+  };
+  payload?: CalendlyEventPayload;
+}
+
+interface CalendlyEventListenerOptions {
+  onProfilePageSubmitted?: (e: CalendlyEvent) => void;
+  onEventScheduled?: (e: CalendlyEvent) => Promise<void> | void;
+}
+
 export default function CalendlyModal({
   isVisible,
   onClose,
@@ -73,7 +104,7 @@ export default function CalendlyModal({
               clearInterval(checkCalendlyLoaded);
               console.log("✅ Calendly widget loaded");
             }
-          } catch (e) {
+          } catch {
             // Cross-origin restriction, just wait for the timeout
           }
         }
@@ -117,7 +148,7 @@ export default function CalendlyModal({
   // Listen for Calendly scheduled events and capture to analytics/CRM
   useCalendlyEventListener({
     // Fires when the user submits their details (name/email) before picking a time
-    onProfilePageSubmitted: (e: any) => {
+    onProfilePageSubmitted: (e: CalendlyEvent) => {
       try {
         const payload = e?.data?.payload || e?.payload || {};
         const name = payload?.name || payload?.invitee?.name || "";
@@ -136,7 +167,7 @@ export default function CalendlyModal({
         console.error("❌ Failed to capture Calendly profile submission", err);
       }
     },
-    onEventScheduled: async (e: any) => {
+    onEventScheduled: async (e: CalendlyEvent) => {
       console.log("🎉 Calendly Event Triggered!", e);
       try {
         const payload = e?.data?.payload || e?.payload || {};
@@ -258,7 +289,7 @@ export default function CalendlyModal({
         console.error("❌ Calendly scheduled event capture failed", err);
       }
     },
-  } as any);
+  } as CalendlyEventListenerOptions);
 
   if (!isVisible) return null;
 
@@ -376,7 +407,7 @@ export default function CalendlyModal({
             </div>
 
             <div className="space-y-4 mb-6">
-              <h3 className="text-xl font-bold mb-4">What You'll Get:</h3>
+              <h3 className="text-xl font-bold mb-4">What You&apos;ll Get:</h3>
 
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-300 mt-0.5" />

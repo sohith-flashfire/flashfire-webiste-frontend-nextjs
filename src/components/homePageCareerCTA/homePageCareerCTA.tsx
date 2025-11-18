@@ -13,11 +13,11 @@ export default function HomePageCareerCTA() {
         {/* === LEFT: Content === */}
         <div className={styles.leftContent}>
           <h2 className={styles.heading}>
-            Just Graduated? Let's Fire Up Your Career!
+            Just Graduated? Let&apos;s Fire Up Your Career!
           </h2>
 
           <p className={styles.subtext}>
-            You've done your part, now let Flashfire handle the job hunt. <br />
+            You&apos;ve done your part, now let Flashfire handle the job hunt. <br />
             Our AI-powered team gets your profile recruiter-ready and{" "}
             <strong>
               applies to the right jobs so you can land interviews faster.

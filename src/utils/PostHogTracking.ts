@@ -130,23 +130,30 @@ const getUTMContext = (): Partial<PostHogEventProperties> => {
     return {};
   }
 
+
   const utmSource =
     localStorage.getItem("utm_source") ||
     new URLSearchParams(window.location.search).get("utm_source");
+  const utmMedium =
+    localStorage.getItem("utm_medium") ||
+    new URLSearchParams(window.location.search).get("utm_medium");
+  const utmCampaign =
+    localStorage.getItem("utm_campaign") ||
+    new URLSearchParams(window.location.search).get("utm_campaign");
+  const utmContent =
+    localStorage.getItem("utm_content") ||
+    new URLSearchParams(window.location.search).get("utm_content");
+  const utmTerm =
+    localStorage.getItem("utm_term") ||
+    new URLSearchParams(window.location.search).get("utm_term");
   const refCode = localStorage.getItem("ref-code");
 
   return {
     utm_source: utmSource || "direct",
-    utm_medium:
-      new URLSearchParams(window.location.search).get("utm_medium") ||
-      "website",
-    utm_campaign:
-      new URLSearchParams(window.location.search).get("utm_campaign") ||
-      "organic",
-    utm_content:
-      new URLSearchParams(window.location.search).get("utm_content") || "none",
-    utm_term:
-      new URLSearchParams(window.location.search).get("utm_term") || "none",
+    utm_medium: utmMedium || "website",
+    utm_campaign: utmCampaign || "organic",
+    utm_content: utmContent || "none",
+    utm_term: utmTerm || "none",
     lead_source: refCode || utmSource || "direct",
   };
 };

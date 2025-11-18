@@ -3,12 +3,17 @@
 import { PostHogProvider, usePostHog } from "posthog-js/react";
 import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { captureUTMParams } from "@/src/utils/captureUTMParams";
 
 // Inner component to handle pageview tracking
 function PostHogPageView({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const posthog = usePostHog();
+
+  useEffect(() => {
+    captureUTMParams();
+  }, []);
 
   useEffect(() => {
     // Track pageviews on route change
@@ -28,6 +33,18 @@ function PostHogPageView({ children }: { children: React.ReactNode }) {
       const utmSource = typeof window !== "undefined"
         ? localStorage.getItem("utm_source") || new URLSearchParams(window.location.search).get("utm_source")
         : null;
+      const utmMedium = typeof window !== "undefined"
+        ? localStorage.getItem("utm_medium") || new URLSearchParams(window.location.search).get("utm_medium")
+        : null;
+      const utmCampaign = typeof window !== "undefined"
+        ? localStorage.getItem("utm_campaign") || new URLSearchParams(window.location.search).get("utm_campaign")
+        : null;
+      const utmContent = typeof window !== "undefined"
+        ? localStorage.getItem("utm_content") || new URLSearchParams(window.location.search).get("utm_content")
+        : null;
+      const utmTerm = typeof window !== "undefined"
+        ? localStorage.getItem("utm_term") || new URLSearchParams(window.location.search).get("utm_term")
+        : null;
       
       // PostHog automatically tracks pageviews, but we ensure it captures route changes
       posthog.capture("$pageview", {
@@ -36,13 +53,10 @@ function PostHogPageView({ children }: { children: React.ReactNode }) {
         is_canada: isCanada,
         locale: isCanada ? "en-ca" : "en-us",
         utm_source: utmSource || "direct",
-        // Include all UTM params for site traffic reports
-        utm_medium: typeof window !== "undefined" 
-          ? new URLSearchParams(window.location.search).get("utm_medium") || "website"
-          : "website",
-        utm_campaign: typeof window !== "undefined"
-          ? new URLSearchParams(window.location.search).get("utm_campaign") || "organic"
-          : "organic",
+        utm_medium: utmMedium || "website",
+        utm_campaign: utmCampaign || "organic",
+        utm_content: utmContent || "none",
+        utm_term: utmTerm || "none",
       });
     }
   }, [pathname, searchParams, posthog]);

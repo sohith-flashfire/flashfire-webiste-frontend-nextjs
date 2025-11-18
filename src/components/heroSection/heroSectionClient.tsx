@@ -6,6 +6,7 @@ import styles from "./heroSection.module.css";
 import { HeroSectionData } from "@/src/types/heroSectionData";
 import SignupModal from "@/src/components/signupModal/SignupModal";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
+import { GTagUTM } from "@/src/utils/GTagUTM";
 
 type Props = {
   data: HeroSectionData;
@@ -47,6 +48,25 @@ export default function HeroSectionClient({ data }: Props) {
       {/* === CTA Button === */}
       <button
         onClick={() => {
+          const utmSource = typeof window !== "undefined" 
+            ? localStorage.getItem("utm_source") || "WEBSITE"
+            : "WEBSITE";
+          const utmMedium = typeof window !== "undefined"
+            ? localStorage.getItem("utm_medium") || "Website_Front_Page"
+            : "Website_Front_Page";
+          
+          GTagUTM({
+            eventName: "sign_up_click",
+            label: "Hero_Start_Free_Trial_Button",
+            utmParams: {
+              utm_source: utmSource,
+              utm_medium: utmMedium,
+              utm_campaign: typeof window !== "undefined"
+                ? localStorage.getItem("utm_campaign") || "Website"
+                : "Website",
+            },
+          });
+          
           // PostHog tracking
           trackButtonClick("Get me interview", "hero_cta", "cta", {
             button_location: "hero_main_cta",

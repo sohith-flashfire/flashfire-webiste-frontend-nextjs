@@ -97,7 +97,7 @@ export default function HomePageFAQClient() {
           </h2>
 
           <p className={styles.demoText}>
-            We get it, <em>finding the right job isn't easy.</em> Book a quick
+            We get it, <em>finding the right job isn&apos;t easy.</em> Book a quick
             chat with our founder and see how Flashfire can help you land
             interviews faster.
           </p>

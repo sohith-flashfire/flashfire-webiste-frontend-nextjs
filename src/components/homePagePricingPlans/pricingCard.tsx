@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { FaBolt } from "react-icons/fa";
 import { trackButtonClick } from "@/src/utils/PostHogTracking";
+import { GTagUTM } from "@/src/utils/GTagUTM";
 
 interface PricingCardProps {
   title: string;
@@ -301,6 +302,25 @@ export default function PricingCard({
       <button
         className="bg-black text-white border-none py-[0.9rem] px-4 font-semibold text-[0.95rem] rounded-[0.4rem] w-full cursor-pointer transition-all duration-300 hover:bg-[#111] max-[768px]:text-[0.9rem] max-[768px]:py-3 max-[480px]:text-[0.85rem] max-[480px]:py-[0.7rem] max-[480px]:px-[0.9rem]"
         onClick={() => {
+          const utmSource = typeof window !== "undefined"
+            ? localStorage.getItem("utm_source") || "WEBSITE"
+            : "WEBSITE";
+          const utmMedium = typeof window !== "undefined"
+            ? localStorage.getItem("utm_medium") || "Pricing_Section"
+            : "Pricing_Section";
+          
+          if (typeof window !== "undefined") {
+            GTagUTM({
+              eventName: "pricing_cta_click",
+              label: `Pricing_${title}_Button`,
+              utmParams: {
+                utm_source: utmSource,
+                utm_medium: utmMedium,
+                utm_campaign: localStorage.getItem("utm_campaign") || "Website",
+              },
+            });
+          }
+          
           // PostHog tracking
           trackButtonClick(`Get Me Interview - ${title}`, "pricing_cta", "cta", {
             button_location: "pricing_plan",
