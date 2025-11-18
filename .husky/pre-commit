@@ -1,0 +1,4 @@
+echo "Running Pre-commit checks..."
+npm run type-check
+npm run lint
+npx lint-staged
