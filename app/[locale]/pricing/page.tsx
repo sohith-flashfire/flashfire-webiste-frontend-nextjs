@@ -1,12 +1,13 @@
 import SectionPage from "@/src/components/pages/shared/SectionPage";
 
 interface LocalePricingPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocalePricingPage({ params }: LocalePricingPageProps) {
+export default async function LocalePricingPage({ params }: LocalePricingPageProps) {
+  await params; // Await params even if not used
   return <SectionPage sectionId="pricing" />;
 }
 

@@ -1,12 +1,13 @@
 import SectionPage from "@/src/components/pages/shared/SectionPage";
 
 interface LocaleTestimonialsPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocaleTestimonialsPage({ params }: LocaleTestimonialsPageProps) {
+export default async function LocaleTestimonialsPage({ params }: LocaleTestimonialsPageProps) {
+  await params; // Await params even if not used
   return <SectionPage sectionId="testimonials" />;
 }
 

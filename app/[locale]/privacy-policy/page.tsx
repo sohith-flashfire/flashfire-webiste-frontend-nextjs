@@ -3,12 +3,13 @@ import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
 interface LocalePrivacyPolicyPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocalePrivacyPolicyPage({ params }: LocalePrivacyPolicyPageProps) {
+export default async function LocalePrivacyPolicyPage({ params }: LocalePrivacyPolicyPageProps) {
+  await params; // Await params even if not used
   return (
     <>
       <Navbar />

@@ -3,15 +3,15 @@ import HomePage from "@/src/components/pages/home/Home";
 import CanadaHome from "@/src/components/countries/ca/Home";
 
 interface LocalePageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
 const validLocales = ["en-ca"];
 
-export default function LocalePage({ params }: LocalePageProps) {
-  const { locale } = params;
+export default async function LocalePage({ params }: LocalePageProps) {
+  const { locale } = await params;
 
   // Handle default locale (no locale in URL)
   if (!locale || locale === "default") {

@@ -3,12 +3,13 @@ import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
 interface LocaleBlogsPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocaleBlogsPage({ params }: LocaleBlogsPageProps) {
+export default async function LocaleBlogsPage({ params }: LocaleBlogsPageProps) {
+  await params; // Await params even if not used
   return (
     <>
       <Navbar />

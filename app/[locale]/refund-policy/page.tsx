@@ -3,12 +3,13 @@ import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
 interface LocaleRefundPolicyPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocaleRefundPolicyPage({ params }: LocaleRefundPolicyPageProps) {
+export default async function LocaleRefundPolicyPage({ params }: LocaleRefundPolicyPageProps) {
+  await params; // Await params even if not used
   return (
     <>
       <Navbar />

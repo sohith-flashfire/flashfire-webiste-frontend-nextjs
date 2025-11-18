@@ -65,14 +65,14 @@ const offerLetters: OfferLetterData[] = [
   {
     name: "Amit",
     company: "Armorcode",
-    linkedinUrl: "https://www.linkedin.com/in/amit-gupta-828570242/",
+    linkedinUrl: "#",
     imagePath: "/images/amit_offer.png",
     profileImagePath: "/images/amit.jpg",
   },
   {
     name: "Rudraksh",
     company: "State Street",
-    linkedinUrl: "https://www.linkedin.com/in/rudraksh-tripathi-89291223b/",
+    linkedinUrl: "#",
     imagePath: "/images/rudraksh_offer.png",
     profileImagePath: "/images/rudraksh.jpg",
   },
@@ -93,7 +93,7 @@ const offerLetters: OfferLetterData[] = [
   {
     name: "Aman Guleria",
     company: "Barclays",
-    linkedinUrl: "https://www.linkedin.com/in/aman-guleria/",
+    linkedinUrl: "#",
     imagePath: "/images/aman_offer.png",
     profileImagePath: "/images/aman.jpg",
   },

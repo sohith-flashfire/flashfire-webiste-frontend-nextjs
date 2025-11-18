@@ -1,12 +1,13 @@
 import SectionPage from "@/src/components/pages/shared/SectionPage";
 
 interface LocaleFeaturePageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocaleFeaturePage({ params }: LocaleFeaturePageProps) {
+export default async function LocaleFeaturePage({ params }: LocaleFeaturePageProps) {
+  await params; // Await params even if not used
   return <SectionPage sectionId="feature" />;
 }
 

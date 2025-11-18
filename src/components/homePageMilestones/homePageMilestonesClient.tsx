@@ -93,8 +93,8 @@ export default function HomePageMilestonesClient() {
       image: "/images/rudraksh.jpg",
     },
     {
-      company: "Microsoft",
-      domain: "microsoft.com",
+      company: "Urban Electric Power",
+      domain: "urbanelectricpower.com",
       text: "From job search chaos to complete clarity — Flashfire revolutionized how I approached my career search. The platform's AI-powered system sent out hundreds of tailored applications automatically, and I received 4 interview calls from top companies in my first week alone. The real-time tracking and optimization features are game-changers. Microsoft here I come!",
       user: "Sai Krishna",
       role: "Data Analyst",

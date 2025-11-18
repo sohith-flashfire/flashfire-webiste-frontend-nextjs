@@ -3,12 +3,13 @@ import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
 interface LocaleTermsOfServicePageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function LocaleTermsOfServicePage({ params }: LocaleTermsOfServicePageProps) {
+export default async function LocaleTermsOfServicePage({ params }: LocaleTermsOfServicePageProps) {
+  await params; // Await params even if not used
   return (
     <>
       <Navbar />
