@@ -14,6 +14,7 @@ import HomePageSteps from "@/src/components/homePageSteps/homePageSteps";
 import HomePageVideo from "@/src/components/homePageVideo/homePageVideo";
 import HomePageWhyChooseFF from "@/src/components/homePageWhyChooseFF/homePageWhyChooseFF";
 import Navbar from "@/src/components/navbar/navbar";
+import SalesPopUp from "@/src/components/SalesPopUp";
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
       <HomePageFoundersNote />
       <HomePageCareerCTA />
       <Footer />
+      <SalesPopUp />
     </>
   );
 };

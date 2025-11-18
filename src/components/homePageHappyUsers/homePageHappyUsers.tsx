@@ -105,7 +105,7 @@ export default function HomePageHappyUsers() {
     >
       {/* === Top Orange Section === */}
       <div className="bg-[#f55d1d] text-white text-center py-20 px-8 pb-40 relative">
-        <h2 
+        <h2
           className="mb-12 max-[600px]:text-[2rem]"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
@@ -114,7 +114,7 @@ export default function HomePageHappyUsers() {
             fontSize: "76.26px",
             lineHeight: "110%",
             letterSpacing: "-2.29px", // -3% of 76.26px
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           100+ Happy Users&rsquo; Love!
@@ -140,11 +140,11 @@ export default function HomePageHappyUsers() {
         </div>
 
         <Image
-          src="/images/character-shape.png"
+          src="/images/character1.png"
           alt="Flashfire Mascot Shape"
-          width={260}
-          height={260}
-          className="absolute left-1/2 -bottom-28 -translate-x-1/2 z-[3] w-52 h-52 max-[600px]:w-36 max-[600px]:h-36 max-[600px]:-bottom-18 drop-shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
+          width={300}
+          height={300}
+          className="absolute left-1/2 -bottom-28 -translate-x-1/2 z-[3] w-64 h-64 max-[600px]:w-40 max-[600px]:h-40 max-[600px]:-bottom-18 "
         />
       </div>
 
@@ -159,7 +159,7 @@ export default function HomePageHappyUsers() {
               <div className="relative w-full h-full rounded-none overflow-hidden">
                 <video
                   id={`userVideo-${index}`}
-                  className={`w-full h-full object-cover block rounded-none cursor-pointer ${playingIndex === index ? 'block' : 'hidden'}`}
+                  className={`w-full h-full object-cover block rounded-none cursor-pointer ${playingIndex === index ? "block" : "hidden"}`}
                   controls={playingIndex === index}
                   muted
                   loop

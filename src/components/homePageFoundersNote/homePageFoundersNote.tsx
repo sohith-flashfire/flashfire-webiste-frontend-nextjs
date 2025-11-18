@@ -79,7 +79,7 @@ export default function HomePageFoundersNote() {
               </div>
             </div>
             <Image
-              src="/images/character-shape.png"
+              src="/images/character2.png"
               alt="Flashfire Mascot"
               width={220}
               height={220}

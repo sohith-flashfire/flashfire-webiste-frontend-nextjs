@@ -1,9 +1,4 @@
-import {
-  PiTargetDuotone,
-  PiTrophyDuotone,
-  PiRocketDuotone,
-  PiHandshakeDuotone,
-} from "react-icons/pi";
+import Image from "next/image";
 
 export default function HomePageSteps() {
   return (
@@ -41,8 +36,14 @@ export default function HomePageSteps() {
                 {step.description}
               </p>
             </div>
-            <div className="text-[6rem] text-[#ff4c00] opacity-90 self-center mt-6 max-[1024px]:text-[5rem] max-[768px]:text-[3.5rem]">
-              {step.icon}
+            <div className="self-center mt-6 flex items-center justify-center">
+              <Image
+                src={step.icon}
+                alt={step.heading}
+                width={120}
+                height={120}
+                className="max-[1024px]:w-24 max-[1024px]:h-24 max-[768px]:w-20 max-[768px]:h-20"
+              />
             </div>
           </div>
         ))}
@@ -56,24 +57,24 @@ const steps = [
     heading: "You share your goals.",
     description:
       "Tell us what you are aiming for, your dream role, location, and experience. We learn your story so we can find the right opportunities for you.",
-    icon: <PiTargetDuotone />,
+    icon: "/images/step1.png",
   },
   {
     heading: "We build your winning profile.",
     description:
       "Our AI rewrites your resume and LinkedIn to match top U.S. recruiter searches. Your profile starts showing up where it matters, on the right screens.",
-    icon: <PiTrophyDuotone />,
+    icon: "/images/step2.png",
   },
   {
     heading: "Flashfire AI applies for you.",
     description:
       "We apply to 1000+ curated roles for you, based on your goals and visa needs. No spam, no mass blasts, only smart, targeted applications.",
-    icon: <PiRocketDuotone />,
+    icon: "/images/step3.png",
   },
   {
     heading: "You start getting interview calls.",
     description:
       "As applications go out, you start getting real calls from real recruiters. We track, follow up, and optimize every step so you can focus on preparing.",
-    icon: <PiHandshakeDuotone />,
+    icon: "/images/step4.png",
   },
 ];

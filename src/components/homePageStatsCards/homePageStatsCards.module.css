@@ -41,8 +41,8 @@
   align-items: center;
   justify-content: center;
   color: #f67b46;
-  width: 44px;
-  height: 44px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 0.5rem;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .iconImage {
-  width: 44px;
-  height: 44px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   opacity: 1;
 }
@@ -120,4 +120,3 @@
     font-size: 2.2rem;
   }
 }
-
