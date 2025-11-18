@@ -249,50 +249,50 @@ export default function NavbarClient({ links, ctas }: Props) {
     </nav>
 
     {/* Black Friday Sale Banner - Below Navbar */}
-    <div className="w-full bg-[#f5f5f0] border-t border-[rgba(241,241,241,0.2)] py-1 px-4 flex items-center justify-center max-[900px]:py-1 max-[900px]:px-3 font-['Space_Grotesk',sans-serif]">
-      <div className="flex items-center justify-center gap-3 flex-wrap max-w-[1400px] w-full max-[900px]:gap-2 max-[600px]:flex-col max-[600px]:gap-3">
-        <span className="font-bold text-[1.4rem] text-black tracking-[0.02em] uppercase max-[900px]:text-[0.95rem]">
+    <div className="w-full bg-[#f5f5f0] border-t border-[rgba(241,241,241,0.2)] py-0.5 px-4 flex items-center justify-center max-[900px]:py-0.5 max-[900px]:px-3 font-['Space_Grotesk',sans-serif]">
+      <div className="flex items-center justify-center gap-2 flex-wrap max-w-[1400px] w-full max-[900px]:gap-1.5 max-[600px]:flex-col max-[600px]:gap-2">
+        <span className="font-bold text-[1.1rem] text-black tracking-[0.02em] uppercase max-[900px]:text-[0.85rem]">
           BLACK FRIDAY SALE
         </span>
-        <span className="text-[#ff4c00] text-[1.2rem] font-bold leading-none max-[900px]:text-base">
+        <span className="text-[#ff4c00] text-[1rem] font-bold leading-none max-[900px]:text-sm">
           ✱
         </span>
-        <span className="text-[0.95rem] text-black font-medium max-[900px]:text-[0.85rem]">
+        <span className="text-[0.85rem] text-black font-medium max-[900px]:text-[0.75rem]">
           Get flat $20 discount on all plans
         </span>
-        <span className="text-[#ff4c00] text-[1.2rem] font-bold leading-none max-[900px]:text-base">
+        <span className="text-[#ff4c00] text-[1rem] font-bold leading-none max-[900px]:text-sm">
           ✱
         </span>
-        <div className="flex gap-2 items-center max-[600px]:gap-1.5">
-          <div className="bg-white border-2 border-black rounded-[0.5rem] py-2 px-3 min-w-[60px] text-center shadow-[0_2px_4px_rgba(255,76,0,0.2),0_5px_2px_#ff4c00] max-[900px]:min-w-[50px] max-[900px]:py-1.5 max-[900px]:px-2.5 max-[600px]:min-w-[45px] max-[600px]:py-1.5 max-[600px]:px-2">
-            <div className="font-extrabold text-[1.25rem] text-black leading-[1.2] mb-[0.2rem] max-[900px]:text-[1.1rem] max-[600px]:text-base">
+        <div className="flex gap-1 items-center max-[600px]:gap-0.5">
+          <div className="bg-white border border-black rounded-[0.3rem] py-0.5 px-1.5 min-w-[42px] text-center shadow-[0_1px_3px_rgba(255,76,0,0.2),0_3px_1px_#ff4c00] max-[900px]:min-w-[38px] max-[900px]:py-0.5 max-[900px]:px-1.5 max-[600px]:min-w-[35px] max-[600px]:py-0.5 max-[600px]:px-1">
+            <div className="font-extrabold text-[0.9rem] text-black leading-[1.1] mb-[0.05rem] max-[900px]:text-[0.85rem] max-[600px]:text-xs">
               {String(timeLeft.days).padStart(2, "0")}
             </div>
-            <div className="text-[0.7rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.65rem] max-[600px]:text-[0.6rem]">
+            <div className="text-[0.55rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.5rem] max-[600px]:text-[0.45rem]">
               Days
             </div>
           </div>
-          <div className="bg-white border-2 border-black rounded-[0.5rem] py-2 px-3 min-w-[60px] text-center shadow-[0_2px_4px_rgba(255,76,0,0.2),0_5px_2px_#ff4c00] max-[900px]:min-w-[50px] max-[900px]:py-1.5 max-[900px]:px-2.5 max-[600px]:min-w-[45px] max-[600px]:py-1.5 max-[600px]:px-2">
-            <div className="font-extrabold text-[1.25rem] text-black leading-[1.2] mb-[0.2rem] max-[900px]:text-[1.1rem] max-[600px]:text-base">
+          <div className="bg-white border border-black rounded-[0.3rem] py-0.5 px-1.5 min-w-[42px] text-center shadow-[0_1px_3px_rgba(255,76,0,0.2),0_3px_1px_#ff4c00] max-[900px]:min-w-[38px] max-[900px]:py-0.5 max-[900px]:px-1.5 max-[600px]:min-w-[35px] max-[600px]:py-0.5 max-[600px]:px-1">
+            <div className="font-extrabold text-[0.9rem] text-black leading-[1.1] mb-[0.05rem] max-[900px]:text-[0.85rem] max-[600px]:text-xs">
               {String(timeLeft.hours).padStart(2, "0")}
             </div>
-            <div className="text-[0.7rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.65rem] max-[600px]:text-[0.6rem]">
+            <div className="text-[0.55rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.5rem] max-[600px]:text-[0.45rem]">
               Hrs
             </div>
           </div>
-          <div className="bg-white border-2 border-black rounded-[0.5rem] py-2 px-3 min-w-[60px] text-center shadow-[0_2px_4px_rgba(255,76,0,0.2),0_5px_2px_#ff4c00] max-[900px]:min-w-[50px] max-[900px]:py-1.5 max-[900px]:px-2.5 max-[600px]:min-w-[45px] max-[600px]:py-1.5 max-[600px]:px-2">
-            <div className="font-extrabold text-[1.25rem] text-black leading-[1.2] mb-[0.2rem] max-[900px]:text-[1.1rem] max-[600px]:text-base">
+          <div className="bg-white border border-black rounded-[0.3rem] py-0.5 px-1.5 min-w-[42px] text-center shadow-[0_1px_3px_rgba(255,76,0,0.2),0_3px_1px_#ff4c00] max-[900px]:min-w-[38px] max-[900px]:py-0.5 max-[900px]:px-1.5 max-[600px]:min-w-[35px] max-[600px]:py-0.5 max-[600px]:px-1">
+            <div className="font-extrabold text-[0.9rem] text-black leading-[1.1] mb-[0.05rem] max-[900px]:text-[0.85rem] max-[600px]:text-xs">
               {String(timeLeft.minutes).padStart(2, "0")}
             </div>
-            <div className="text-[0.7rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.65rem] max-[600px]:text-[0.6rem]">
+            <div className="text-[0.55rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.5rem] max-[600px]:text-[0.45rem]">
               Mins
             </div>
           </div>
-          <div className="bg-white border-2 border-black rounded-[0.5rem] py-2 px-3 min-w-[60px] text-center shadow-[0_2px_4px_rgba(255,76,0,0.2),0_5px_2px_#ff4c00] max-[900px]:min-w-[50px] max-[900px]:py-1.5 max-[900px]:px-2.5 max-[600px]:min-w-[45px] max-[600px]:py-1.5 max-[600px]:px-2">
-            <div className="font-extrabold text-[1.25rem] text-black leading-[1.2] mb-[0.2rem] max-[900px]:text-[1.1rem] max-[600px]:text-base">
+          <div className="bg-white border border-black rounded-[0.3rem] py-0.5 px-1.5 min-w-[42px] text-center shadow-[0_1px_3px_rgba(255,76,0,0.2),0_3px_1px_#ff4c00] max-[900px]:min-w-[38px] max-[900px]:py-0.5 max-[900px]:px-1.5 max-[600px]:min-w-[35px] max-[600px]:py-0.5 max-[600px]:px-1">
+            <div className="font-extrabold text-[0.9rem] text-black leading-[1.1] mb-[0.05rem] max-[900px]:text-[0.85rem] max-[600px]:text-xs">
               {String(timeLeft.seconds).padStart(2, "0")}
             </div>
-            <div className="text-[0.7rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.65rem] max-[600px]:text-[0.6rem]">
+            <div className="text-[0.55rem] text-black font-medium uppercase tracking-[0.02em] max-[900px]:text-[0.5rem] max-[600px]:text-[0.45rem]">
               Secs
             </div>
           </div>
