@@ -1,19 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./heroSection.module.css";
 import { HeroSectionData } from "@/src/types/heroSectionData";
-import SignupModal from "@/src/components/signupModal/SignupModal";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
+import { getCurrentUTMParams } from "@/src/utils/UTMUtils";
 
 type Props = {
   data: HeroSectionData;
 };
 
 export default function HeroSectionClient({ data }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <section className={styles.heroContainer}>
@@ -48,13 +48,13 @@ export default function HeroSectionClient({ data }: Props) {
       {/* === CTA Button === */}
       <button
         onClick={() => {
-          const utmSource = typeof window !== "undefined" 
+          const utmSource = typeof window !== "undefined"
             ? localStorage.getItem("utm_source") || "WEBSITE"
             : "WEBSITE";
           const utmMedium = typeof window !== "undefined"
             ? localStorage.getItem("utm_medium") || "Website_Front_Page"
             : "Website_Front_Page";
-          
+
           GTagUTM({
             eventName: "sign_up_click",
             label: "Hero_Start_Free_Trial_Button",
@@ -66,7 +66,7 @@ export default function HeroSectionClient({ data }: Props) {
                 : "Website",
             },
           });
-          
+
           // PostHog tracking
           trackButtonClick("Get me interview", "hero_cta", "cta", {
             button_location: "hero_main_cta",
@@ -76,8 +76,17 @@ export default function HeroSectionClient({ data }: Props) {
             signup_source: "hero_main_button",
             funnel_stage: "signup_intent"
           });
+
+          // Navigate to /get-me-interview with preserved UTM params
+          const utmParams = getCurrentUTMParams();
+          const targetPath = utmParams ? `/get-me-interview?${utmParams}` : '/get-me-interview';
           
-          setIsModalOpen(true);
+          // Dispatch custom event to force show modal (even if already on the route)
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('showGetMeInterviewModal'));
+          }
+          
+          router.push(targetPath);
         }}
         className={styles.heroCTAButton}
       >
@@ -127,12 +136,6 @@ export default function HeroSectionClient({ data }: Props) {
           </div>
         </div>
       </div>
-
-      {/* === Signup Modal === */}
-      <SignupModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }

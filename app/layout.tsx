@@ -103,6 +103,8 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+import ClientLogicWrapper from "@/src/components/ClientLogicWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -146,8 +148,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
         <PHProvider>
-          {children}
-          <WhatsAppButton />
+          <ClientLogicWrapper>
+            {children}
+            <WhatsAppButton />
+          </ClientLogicWrapper>
         </PHProvider>
         {/* Google Analytics */}
         <Script
