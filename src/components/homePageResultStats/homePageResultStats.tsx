@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./homePageResultStats.module.css";
-import SignupModal from "@/src/components/signupModal/SignupModal";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
+import { getCurrentUTMParams } from "@/src/utils/UTMUtils";
 
 export default function HomePageResultStats() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <section className={styles.resultSection}>
@@ -87,18 +87,21 @@ export default function HomePageResultStats() {
               funnel_stage: "signup_intent"
             });
             
-            setIsModalOpen(true);
+            // Navigate to /get-me-interview with preserved UTM params
+            const utmParams = getCurrentUTMParams();
+            const targetPath = utmParams ? `/get-me-interview?${utmParams}` : '/get-me-interview';
+            
+            // Dispatch custom event to force show modal (even if already on the route)
+            if (typeof window !== 'undefined') {
+              window.dispatchEvent(new CustomEvent('showGetMeInterviewModal'));
+            }
+            
+            router.push(targetPath);
           }}
         >
           Get Me Interview →
         </button>
       </div>
-
-      {/* === Signup Modal === */}
-      <SignupModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }

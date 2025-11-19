@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./homePageFAQ.module.css";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { questionsData } from "@/src/data/questionsData";
 import Image from "next/image";
-import SignupModal from "@/src/components/signupModal/SignupModal";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
+import { getCurrentUTMParams } from "@/src/utils/UTMUtils";
 
 export default function HomePageFAQClient() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleToggle = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -99,7 +100,16 @@ export default function HomePageFAQClient() {
                 funnel_stage: "signup_intent"
               });
               
-              setIsModalOpen(true);
+              // Navigate to /get-me-interview with preserved UTM params
+              const utmParams = getCurrentUTMParams();
+              const targetPath = utmParams ? `/get-me-interview?${utmParams}` : '/get-me-interview';
+              
+              // Dispatch custom event to force show modal (even if already on the route)
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('showGetMeInterviewModal'));
+              }
+              
+              router.push(targetPath);
             }}
             style={{ cursor: "pointer" }}
           >
@@ -155,7 +165,16 @@ export default function HomePageFAQClient() {
                 funnel_stage: "signup_intent"
               });
               
-              setIsModalOpen(true);
+              // Navigate to /get-me-interview with preserved UTM params
+              const utmParams = getCurrentUTMParams();
+              const targetPath = utmParams ? `/get-me-interview?${utmParams}` : '/get-me-interview';
+              
+              // Dispatch custom event to force show modal (even if already on the route)
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('showGetMeInterviewModal'));
+              }
+              
+              router.push(targetPath);
             }}
           >
             Book My Demo Call →
@@ -166,12 +185,6 @@ export default function HomePageFAQClient() {
           </p>
         </div>
       </div>
-
-      {/* === Signup Modal === */}
-      <SignupModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }
