@@ -84,7 +84,7 @@ export default function CalendlyModal({
 
       const checkCalendlyLoaded = setInterval(() => {
         if (typeof window === "undefined") return;
-        
+
         checkCount++;
         const calendlyIframe = document.querySelector('iframe[src*="calendly.com"]');
 
@@ -135,14 +135,14 @@ export default function CalendlyModal({
   // Restore invitee profile info on mount
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     try {
       const savedName = localStorage.getItem("cal_invitee_name") || undefined;
       const savedEmail = localStorage.getItem("cal_invitee_email") || undefined;
       if (savedName || savedEmail) {
         setProfileInvitee({ name: savedName, email: savedEmail });
       }
-    } catch {}
+    } catch { }
   }, []);
 
   // Listen for Calendly scheduled events and capture to analytics/CRM
@@ -160,7 +160,7 @@ export default function CalendlyModal({
               if (name) localStorage.setItem("cal_invitee_name", name);
               if (email) localStorage.setItem("cal_invitee_email", email);
             }
-          } catch {}
+          } catch { }
           console.log("📝 Calendly profile captured:", { name, email });
         }
       } catch (err) {
@@ -293,31 +293,26 @@ export default function CalendlyModal({
 
   if (!isVisible) return null;
 
-  const calendlyUrl = `https://calendly.com/feedback-flashfire/30min?utm_source=${
-    typeof window !== "undefined"
+  const calendlyUrl = `https://calendly.com/feedback-flashfire/30min?utm_source=${typeof window !== "undefined"
       ? localStorage.getItem("utm_source") || "webpage_visit"
       : "webpage_visit"
-  }&utm_medium=${
-    typeof window !== "undefined"
+    }&utm_medium=${typeof window !== "undefined"
       ? localStorage.getItem("utm_medium") || "website"
       : "website"
-  }${
-    typeof window !== "undefined" && localStorage.getItem("utm_campaign")
+    }${typeof window !== "undefined" && localStorage.getItem("utm_campaign")
       ? `&utm_campaign=${localStorage.getItem("utm_campaign")}`
       : ""
-  }${
-    typeof window !== "undefined" && localStorage.getItem("utm_content")
+    }${typeof window !== "undefined" && localStorage.getItem("utm_content")
       ? `&utm_content=${localStorage.getItem("utm_content")}`
       : ""
-  }${
-    typeof window !== "undefined" && localStorage.getItem("utm_term")
+    }${typeof window !== "undefined" && localStorage.getItem("utm_term")
       ? `&utm_term=${localStorage.getItem("utm_term")}`
       : ""
-  }`;
+    }`;
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center w-full"
+      className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center w-full"
       style={{ display: isVisible ? "flex" : "none" }}
     >
       <div className="relative bg-white max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-col lg:flex-row">

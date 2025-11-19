@@ -24,7 +24,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
   const prevIsOpenRef = useRef(isOpen);
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  
+
   if (!API_BASE_URL) {
     console.error("NEXT_PUBLIC_API_BASE_URL is not set");
     // In production, this should be set via environment variables
@@ -42,7 +42,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       requestAnimationFrame(() => {
         setFormData(savedData);
       });
-      
+
       // Track modal open
       trackModalOpen("signup_modal", "hero_cta", {
         trigger_source: "hero_button"
@@ -88,11 +88,11 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       // Return true to allow Calendly to open even if API is not configured
       return true;
     }
-    
+
     try {
       // Combine country code and phone number (remove any spaces or dashes)
       const fullPhoneNumber = `${formData.countryCode}${formData.phone.replace(/\D/g, "")}`;
-      
+
       const response = await fetch(`${API_BASE_URL}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -107,7 +107,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       // Get response text first (can only be called once)
       const responseText = await response.text();
       let result: { message?: string } = {};
-      
+
       // Try to parse as JSON
       if (responseText) {
         try {
@@ -117,7 +117,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
           console.log("Response is not JSON, using status code");
         }
       }
-      
+
       console.log("Response from server:", result);
       console.log("Response status:", response.status);
       console.log("Response text:", responseText);
@@ -131,7 +131,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
         const errorMessage = result?.message || "Unknown error";
         console.log("ℹ️ Backend response:", errorMessage, "(Discord notification sent)");
       }
-      
+
       // Always return true to proceed to Calendly
       return true;
     } catch (error) {
@@ -178,7 +178,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       // Always proceed to Calendly after form submission
       // Backend handles Discord notifications regardless of success/duplicate
       await SaveDetailsToDB();
-      
+
       // Open Calendly modal (always, regardless of backend response)
       setIsSubmitting(false);
       setIsCalendlyOpen(true);
@@ -200,7 +200,7 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center w-full">
+    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center w-full">
       <div className="bg-white w-fit mx-4 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300">
         <div className="p-6 w-full">
           <div className="flex justify-between items-start mb-6 w-full">
