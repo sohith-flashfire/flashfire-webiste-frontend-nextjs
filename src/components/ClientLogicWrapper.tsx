@@ -188,6 +188,7 @@ function ClientLogicWrapperContent({
         if (pathname === '/get-me-interview' && searchParams.toString()) {
             router.replace('/get-me-interview');
         }
+        
     };
 
     const handleSignupModalClose = () => {
