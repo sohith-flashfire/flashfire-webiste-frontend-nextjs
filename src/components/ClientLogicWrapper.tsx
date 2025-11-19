@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { captureUTMParams } from "@/src/utils/UTMUtils";
 import GeoBlockModal from "@/src/components/modals/GeoBlockModal";
 import SignupModal from "@/src/components/signupModal/SignupModal";
 
-export default function ClientLogicWrapper({
+function ClientLogicWrapperContent({
     children,
 }: {
     children: React.ReactNode;
@@ -214,5 +214,17 @@ export default function ClientLogicWrapper({
                 onClose={handleSignupModalClose}
             />
         </>
+    );
+}
+
+export default function ClientLogicWrapper({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <Suspense fallback={<>{children}</>}>
+            <ClientLogicWrapperContent>{children}</ClientLogicWrapperContent>
+        </Suspense>
     );
 }
