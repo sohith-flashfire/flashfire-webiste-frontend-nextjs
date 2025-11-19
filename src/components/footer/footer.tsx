@@ -51,10 +51,10 @@ export default function Footer() {
           <div className={styles.linkRow}>
             <h4>COMPANY STUFF</h4>
             <div className={styles.linkItems}>
-              <Link href={getHref("/refund-policy")} className={styles.footerLink}>Refund Policy</Link>
-              <Link href={getHref("/privacy-policy")} className={styles.footerLink}>Privacy Policy</Link>
-              <Link href={getHref("/payment-policy")} className={styles.footerLink}>Payment Policy</Link>
-              <Link href={getHref("/terms-of-service")} className={styles.footerLink}>Terms of Service</Link>
+              <Link href={getHref("/refund-policy")} className={styles.footerLink} target="_blank" rel="noopener noreferrer">Refund Policy</Link>
+              <Link href={getHref("/privacy-policy")} className={styles.footerLink} target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
+              <Link href={getHref("/payment-policy")} className={styles.footerLink} target="_blank" rel="noopener noreferrer">Payment Policy</Link>
+              <Link href={getHref("/terms-of-service")} className={styles.footerLink} target="_blank" rel="noopener noreferrer">Terms of Service</Link>
             </div>
           </div>
 

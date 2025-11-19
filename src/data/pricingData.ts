@@ -15,7 +15,7 @@ export const usPricingPlans: PricingPlan[] = [
   {
     title: "IGNITE",
     subTitle: "250 Applications",
-    description: "Perfect for entry-level professionals",
+    description: "For senior professionals & executives",
     price: "$199",
     oldPrice: "$299",
     features: [
@@ -50,7 +50,7 @@ export const usPricingPlans: PricingPlan[] = [
     title: "EXECUTIVE",
     tag: "MOST POPULAR",
     subTitle: "1200 Applications",
-    description: "For senior professionals & executive",
+    description: "For senior professionals & executives",
     price: "$599",
     oldPrice: "$699",
     features: [
@@ -107,7 +107,7 @@ export const canadaPricingPlans: PricingPlan[] = [
     title: "EXECUTIVE",
     tag: "Premium",
     subTitle: "1200+ Applications",
-    description: "Perfect for entry-level professionals",
+    description: "For senior professionals & executives",
     price: "CA$839",
     oldPrice: "CA$949",
     features: [
